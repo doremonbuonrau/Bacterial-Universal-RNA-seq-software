@@ -1,0 +1,11 @@
+Bacterial RNA Analysis 1.9.64
+
+UniProt lineage download loop fix
+
+- Replaced large organism/genus UniProt /stream downloads with resumable page-by-page REST retrieval.
+- Each completed page is checkpointed in the shared Database Library before the next page is requested.
+- A timeout retries only the failed page and never discards previously completed pages.
+- If repeated failures stop a run, rerunning resumes from the last completed page rather than from zero.
+- Final FASTA is compressed and validated only after all pages are safely downloaded.
+- Progress reports proteins retrieved plus complete pages cached, without flooding the live console.
+- Global Swiss-Prot remains a separate persistent shared fallback and is not redownloaded when valid.

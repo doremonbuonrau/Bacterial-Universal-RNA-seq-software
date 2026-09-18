@@ -1,0 +1,13 @@
+Bacterial RNA Analysis 1.9.76
+================================
+
+1. Generic linked-result heatmaps now rank and cap displayed X/Y categories, use numbered ticks for dense axes, and preserve every full label in hover text.
+2. GO and co-expression specialized plots now include an independent Show gridlines control; gridlines are hidden by default.
+3. Renaming an automatically detected co-expression module now updates the specialized network legend and hover text immediately.
+4. Enrichment Circos supports mouse-wheel and toolbar zoom with reset, while preserving linked spreadsheet selection.
+5. RichFactor, enrichment bar, and enrichment dot figures use more of the visible plotting panel with smaller margins and better-positioned gradients.
+6. The bacterial cellular-component map distributes labels around the top, left, right, and bottom perimeter. Exterior-routed leaders no longer traverse the cell.
+7. Pathway Database Analysis now makes online KEGG the explicit file-free option. It accepts a KEGG code, scientific organism name, or NCBI taxonomy ID; resolves the organism; downloads pathway links and names; and caches provenance.
+8. TERM2GENE/BioCyc/MetaCyc imports accept TSV, CSV, TXT, or XLSX with common pathway/gene headers. The GUI can create an editable TERM2GENE template and its instructions explain licensed local imports.
+9. OpDetect keeps an existing registered WSL distribution, waits for host-service readiness, checks for a WSL runtime update on the final repair attempt, and offers a confirmed Windows restart when the host remains stuck.
+10. The generated report and package identify this revision as version 1.9.76.

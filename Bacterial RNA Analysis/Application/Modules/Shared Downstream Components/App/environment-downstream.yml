@@ -1,0 +1,33 @@
+# One environment for differential expression, online annotation, functional
+# enrichment, co-expression/module detection, regulatory inference, plotting,
+# Excel organization, and the combined offline report.
+name: prok-rnaseq-downstream
+channels:
+  - conda-forge
+  - bioconda
+  - nodefaults
+dependencies:
+  - python>=3.11,<3.13
+  - pandas>=2.2
+  - numpy>=1.26
+  - requests>=2.32
+  - plotly>=6
+  - cairosvg>=2.7
+  - pillow>=11
+  - networkx>=3.3
+  - diamond
+  - openpyxl>=3.1
+  - r-base>=4.4,<4.5
+  - r-jsonlite
+  - r-data.table
+  - r-dorng
+  - r-ggplot2
+  - r-wgcna
+  - bioconductor-deseq2
+  - bioconductor-edger
+  - bioconductor-limma
+  - bioconductor-clusterprofiler
+  - bioconductor-fgsea
+  - bioconductor-topgo
+  - bioconductor-cemitool
+  - bioconductor-genie3

@@ -1,0 +1,45 @@
+Bacterial RNA Analysis 1.9.72
+
+Differential-expression workflow and linked report
+- Differential expression now requires at least three biological replicates in every compared group in both the Windows GUI and the R analysis backend.
+- The minimum-samples filter defaults to 3 and rejects values below 3.
+- The study-design note wraps the complete outlier guidance instead of ending in an ellipsis.
+- What it shows / What to learn use compact two-row guidance, leaving more height for the plot.
+- The linked spreadsheet header, search controls, and explanation are compacted so the table starts higher.
+- Selecting an MA-plot point or row highlights it without changing the current axes.
+- Circos hover cards use a light readable background. Plot-to-row and row-to-plot selection is batched and no longer triggers an extreme Circos zoom.
+
+One functional-enrichment and co-expression workflow
+- One section-1 input set and one folder scan now supply the DE result, normalized expression matrix, metadata, output folder, optional universe, optional regulator list, and mapping inputs.
+- Functional-enrichment options and co-expression options are shown side by side as sections 3 and 4. Enrichment, module, edge, regulatory, package, and run settings are consolidated in section 5.
+- A single Run combined analysis action performs shared annotation once, enrichment, module/network inference, figures, one Excel workbook, and one combined interactive report in one environment.
+- The visible guide is named Parameter guide; the duplicate sample-size warning card and duplicate network run/input controls are removed from the combined layout.
+- Exploratory mode is selected automatically below 15 expression samples while retaining the caution label in the output.
+- The organism field is a searchable common-bacteria list with an explicit unrestricted option and accuracy warning.
+- Progress headings are bold, and hovering a truncated progress detail displays its complete text.
+
+Resumable UniProt functional annotation
+- UniProt records retrieved after DIAMOND matching are checkpointed by accession in the shared Database Library after every successful batch.
+- A persistent connection reset no longer discards thousands of completed records. The combined run continues with the available annotations, records missing accessions, and a later rerun requests only the unfinished accessions.
+- Progress remains truthful when retrieval is partial instead of displaying a false 100 percent completion.
+
+Interactive visualization panel alignment
+- The plotting region now uses the remaining height below its guide and toolbar instead of receiving the spreadsheet panel's full height.
+- The lower border of every generic or specialized plot is aligned with the lower border of the linked Excel white panel, including its row and page navigation controls.
+- Viewport resizing recalculates one shared lower boundary for the plot and spreadsheet columns.
+
+Co-expression / CEMiTool metadata-trait robustness
+- Fixes the post-module CEMiTool failure: "contrasts can be applied only to factors with 2 or more levels".
+- The failure occurred after CEMiTool had successfully selected a forced beta and detected modules; the crash was in the software's module-versus-sample-metadata association step, not in CEMiTool module detection.
+- Module/trait association no longer passes the whole metadata frame into model.matrix(). This prevents constant one-level bookkeeping columns from aborting an otherwise successful network analysis.
+- Numeric metadata traits remain continuous.
+- Categorical metadata traits are encoded explicitly as level-specific 0/1 indicators, without R contrast handling.
+- Constant or all-missing metadata columns are skipped with a clear run-log note rather than treated as fatal errors.
+- If no variable metadata trait remains, the network analysis still completes normally and writes an empty module_trait_associations.tsv instead of failing.
+- The same robust trait handling applies to both CEMiTool and WGCNA because both use the shared trait-association helper.
+
+Preserved from 1.9.71
+- Small-sample CEMiTool exploratory runs use the bounded force_beta safeguard.
+- No-module outcomes remain valid nonfatal results.
+- Shared UniProt/DIAMOND Database Library reuse is unchanged.
+- Existing safe-stop, layout, GO, STRING, Pathway, Transcript Discovery and TU fixes are unchanged.

@@ -1,0 +1,9 @@
+Bacterial RNA Analysis 1.9.65
+
+Safe-stop process cleanup
+
+- Downstream DE/GO/Network jobs now run inside a dedicated Linux process group.
+- Stop current job terminates the complete Linux group (conda, R, Python, DIAMOND, database downloads and child helpers), waits for it to exit, then cleans the Windows wrapper tree.
+- Closing the downstream window while a job is active now waits for managed Linux processes to stop before closing.
+- RNA Processing uses the same managed process-group supervision. Its Safe stop now interrupts the active bioinformatics command, preserves completed checkpoints, waits for WSL to exit, and prevents hidden background jobs from keeping result folders locked.
+- Completed Shared Database Library files and completed paginated UniProt pages remain reusable after a safe stop.

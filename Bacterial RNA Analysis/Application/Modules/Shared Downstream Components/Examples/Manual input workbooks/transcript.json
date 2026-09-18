@@ -1,0 +1,79 @@
+{
+  "profile": "transcript",
+  "title": "Transcript Discovery manual input",
+  "sheets": [
+    {
+      "name": "Input paths",
+      "required": false,
+      "description": "Enter Windows file or folder paths in the file_or_folder_path column.",
+      "headers": [
+        "input_name",
+        "file_or_folder_path",
+        "notes"
+      ],
+      "rows": [
+        [
+          "RNA Processing result folder",
+          "",
+          "Preferred: completed RNA Processing Results folder"
+        ],
+        [
+          "Reference FASTA override",
+          "",
+          "Optional; contigs must match annotation and coverage"
+        ],
+        [
+          "Gene annotation override",
+          "",
+          "Optional GFF3/GFF/GTF"
+        ],
+        [
+          "Coverage folder override",
+          "",
+          "Optional folder containing strand-specific tracks"
+        ]
+      ],
+      "example_headers": [
+        "input_name",
+        "file_or_folder_path",
+        "notes"
+      ],
+      "example_rows": [
+        [
+          "RNA Processing result folder",
+          "C:\\\\experiment\\\\RNA Processing Results",
+          "Replace with your own completed result folder"
+        ]
+      ]
+    },
+    {
+      "name": "Rockhopper optional",
+      "required": false,
+      "description": "Optional precomputed Rockhopper transcript evidence.",
+      "headers": [
+        "seqid",
+        "start",
+        "end",
+        "strand",
+        "transcript_id"
+      ],
+      "rows": [],
+      "example_headers": [
+        "seqid",
+        "start",
+        "end",
+        "strand",
+        "transcript_id"
+      ],
+      "example_rows": [
+        [
+          "contig_1",
+          "101",
+          "900",
+          "+",
+          "tx_001"
+        ]
+      ]
+    }
+  ]
+}

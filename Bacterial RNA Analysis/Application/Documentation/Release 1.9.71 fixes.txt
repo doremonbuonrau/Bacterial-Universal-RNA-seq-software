@@ -1,0 +1,13 @@
+Bacterial RNA Analysis 1.9.71
+
+Co-expression / CEMiTool robustness
+- Fixes the new failure where CEMiTool accepted the data.frame input but automatic soft-threshold beta selection returned NA and therefore no modules.
+- Exploratory CEMiTool runs below 15 samples now use CEMiTool's documented force_beta=TRUE safeguard automatically unless the user explicitly chooses set_beta/force_beta in Advanced package options.
+- If automatic beta fails in a non-small dataset, CEMiTool retries exactly once with force_beta=TRUE; there is no retry loop.
+- The selected GUI network type, correlation method, and minimum module size are now passed through to CEMiTool rather than silently falling back to package defaults.
+- Registers the existing doParallel backend for CEMiTool when available.
+- Writes CEMiTool_beta_diagnostics.tsv for audit/review.
+- If CEMiTool still cannot detect defensible modules after the beta strategy, the analysis completes cleanly with zero modules/edges and writes CEMiTool_no_modules.txt instead of crashing. No artificial modules are invented.
+- Interactive network plotting now shows a clear no-edges placeholder instead of attempting a spring layout over thousands of disconnected genes.
+
+This release preserves the shared UniProt/DIAMOND Database Library and all previous layout/safe-stop fixes.

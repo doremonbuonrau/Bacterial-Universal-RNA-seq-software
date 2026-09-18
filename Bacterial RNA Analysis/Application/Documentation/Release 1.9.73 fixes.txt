@@ -1,0 +1,11 @@
+Release 1.9.73
+
+1. Differential-expression axis titles now receive typography bold, italic, underline, font, size, and color settings through the correct Plotly SVG selector.
+2. The Functional Enrichment and Co-expression report is one unified interactive workspace. Separate top-level module tabs were removed; section 1 now lists enrichment, network, module-trait, heatmap, and trend plots together with checkboxes.
+3. The unified linked-sheet selector is limited to plot-capable results: Enrichment results, Network edges, Module trait associations, Module expression Z scores, and Module expression trends.
+4. Specialized plots fit the visible plot region in a responsive grid. Embedded plot scrollbars are removed except for deliberately oversized GO DAG canvases.
+5. Enrichment Circos and dot/RichFactor gradients are positioned at the far right with a two-line adjusted-p title. Circos term count, wrapping, and radial spacing were adjusted to prevent perimeter-label overlap.
+6. The bacterial cellular-component map keeps every canonical component, including zero-count categories, while placing exterior labels in non-crossing anchor order. Extracellular and Other cellular component are on one connector-free summary line.
+7. The combined GUI uses the full labels Use latest DE analysis results, Scan folder for automatic input assignment, Co-expression settings, Functional enrichment settings, and Open interactive results. Section 4 no longer has a nested scrollbar.
+8. The hidden single-tab WinForms container was replaced by a borderless panel, removing the bracket-like border beneath the module title.
+9. OpDetect automatically terminates a stale registered distribution, shuts WSL down, and retries before asking for a Windows restart. It no longer treats packages as missing when Linux could not be evaluated.

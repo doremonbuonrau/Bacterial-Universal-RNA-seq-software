@@ -1,0 +1,10 @@
+Bacterial RNA Analysis 1.9.70
+
+Co-expression / Networks
+- Fixed CEMiTool failure with CEMiTool 1.30.0 and current R environment.
+- The shared preprocessing matrix is now converted to a numeric data.frame only for CEMiTool::cemitool().
+- Gene row names and sample column names are preserved exactly.
+- WGCNA, GENIE3, network edge calculations, and downstream output continue using the existing numeric matrix.
+
+Observed failure repaired
+- checkSlotAssignment: assignment of object of class matrix/array is not valid for the CEMiTool expression slot; is(value, "data.frame") is not TRUE.

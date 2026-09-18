@@ -1,0 +1,8 @@
+Bacterial RNA Analysis 1.9.67
+
+GO / Enrichment layout refinement
+
+- Gene-to-term mapping (offline) and Gene-to-term mapping (online) now share the same row as Open example workbook and Scan result folder.
+- The row is responsive: checkbox widths adapt to the available space while the two helper buttons stay aligned at the right side.
+- The first GO input card was shortened to remove the unused vertical gap and keep the module compact.
+- No analysis logic, annotation logic, database cache, or result format was changed in this release.

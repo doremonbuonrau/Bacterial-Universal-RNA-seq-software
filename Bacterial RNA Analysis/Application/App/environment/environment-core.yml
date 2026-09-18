@@ -1,0 +1,45 @@
+name: prok-rnaseq
+channels:
+  - conda-forge
+  - bioconda
+  - nodefaults
+dependencies:
+  - python=3.11
+  - pip
+  - fastqc>=0.12
+  - fastp>=0.23
+  - cutadapt>=5
+  - multiqc>=1.30
+  - bowtie2>=2.5
+  - bwa-mem2>=2.2
+  - hisat2>=2.2
+  - samtools>=1.21
+  - subread>=2.0
+  - htseq>=2.0
+  - deeptools>=3.5
+  - minimap2>=2.28
+  - winnowmap>=2.03
+  - meryl>=1.4
+  - nanoplot>=1.46
+  - chopper>=0.9
+  - pigz
+  - seqkit
+  # Scientific modules layered onto the proven 1.9.3 processing environment.
+  # These do not change the normal RNA Processing environment check.
+  - bedtools>=2.31
+  - prodigal>=2.6
+  - infernal>=1.1
+  - requests>=2.32
+  - networkx>=3
+  - pybigwig>=0.3
+  - numpy
+  - scipy
+  - matplotlib
+  - scikit-learn
+  - pandas
+  - openpyxl>=3.1
+  - jinja2
+  - h5py
+  - pysam
+  - edlib
+  - python-edlib

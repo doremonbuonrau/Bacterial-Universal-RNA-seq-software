@@ -1,0 +1,123 @@
+{
+  "profile": "pathway",
+  "title": "Pathway Database Analysis manual input",
+  "sheets": [
+    {
+      "name": "Selected genes",
+      "required": true,
+      "description": "Genes selected for pathway over-representation analysis.",
+      "headers": [
+        "gene_id"
+      ],
+      "rows": [],
+      "example_headers": [
+        "gene_id"
+      ],
+      "example_rows": [
+        [
+          "gene_001"
+        ],
+        [
+          "gene_002"
+        ]
+      ]
+    },
+    {
+      "name": "Gene universe",
+      "required": true,
+      "description": "All tested and mappable genes from the experiment.",
+      "headers": [
+        "gene_id"
+      ],
+      "rows": [],
+      "example_headers": [
+        "gene_id"
+      ],
+      "example_rows": [
+        [
+          "gene_001"
+        ],
+        [
+          "gene_002"
+        ],
+        [
+          "gene_003"
+        ]
+      ]
+    },
+    {
+      "name": "TERM2GENE optional",
+      "required": false,
+      "description": "Optional local pathway-to-gene mapping; online KEGG can be used instead.",
+      "headers": [
+        "term_id",
+        "gene_id",
+        "term_name"
+      ],
+      "rows": [],
+      "example_headers": [
+        "term_id",
+        "gene_id",
+        "term_name"
+      ],
+      "example_rows": [
+        [
+          "pathway_001",
+          "gene_001",
+          "Example pathway"
+        ],
+        [
+          "pathway_001",
+          "gene_002",
+          "Example pathway"
+        ]
+      ]
+    },
+    {
+      "name": "BioCyc optional",
+      "required": false,
+      "description": "Optional authorized BioCyc export.",
+      "headers": [
+        "pathway_id",
+        "gene_id",
+        "pathway_name"
+      ],
+      "rows": [],
+      "example_headers": [
+        "pathway_id",
+        "gene_id",
+        "pathway_name"
+      ],
+      "example_rows": [
+        [
+          "PWY-EXAMPLE",
+          "gene_001",
+          "Format example only"
+        ]
+      ]
+    },
+    {
+      "name": "MetaCyc optional",
+      "required": false,
+      "description": "Optional licensed MetaCyc export.",
+      "headers": [
+        "pathway_id",
+        "gene_id",
+        "pathway_name"
+      ],
+      "rows": [],
+      "example_headers": [
+        "pathway_id",
+        "gene_id",
+        "pathway_name"
+      ],
+      "example_rows": [
+        [
+          "PWY-EXAMPLE",
+          "gene_001",
+          "Format example only"
+        ]
+      ]
+    }
+  ]
+}

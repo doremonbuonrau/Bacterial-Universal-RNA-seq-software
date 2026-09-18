@@ -1,0 +1,1515 @@
+{
+  "catalog_version": "1.9.3",
+  "updated": "2026-08-16",
+  "scope": "Workflow-safe documented options. Bundled offline reference manuals are available from every tool page.",
+  "tools": [
+    {
+      "key": "fastqc",
+      "label": "FastQC",
+      "summary": "Quality diagnostics for raw and cleaned short-read FASTQ files.",
+      "manual": "https://www.bioinformatics.babraham.ac.uk/projects/fastqc/",
+      "pipeline_managed": [
+        "input FASTQ files",
+        "--threads",
+        "--outdir"
+      ],
+      "options": [
+        {
+          "id": "nogroup",
+          "label": "Do not group bases for long reads",
+          "flag": "--nogroup",
+          "type": "boolean",
+          "default": false,
+          "description": "Show every base position instead of grouping positions above 50 bp."
+        },
+        {
+          "id": "extract",
+          "label": "Extract the FastQC archive",
+          "flag": "--extract",
+          "type": "boolean",
+          "default": false,
+          "description": "Extract the generated FastQC ZIP after analysis."
+        },
+        {
+          "id": "kmers",
+          "label": "K-mer length",
+          "flag": "--kmers",
+          "type": "integer",
+          "default": 7,
+          "minimum": 2,
+          "maximum": 10,
+          "description": "K-mer size used by the overrepresented k-mer module."
+        }
+      ],
+      "offline_manual": "../Documentation/Offline manuals/RNA-seq processing/fastqc.html"
+    },
+    {
+      "key": "fastp",
+      "label": "fastp",
+      "summary": "Adapter, quality and length filtering for short reads.",
+      "manual": "https://github.com/OpenGene/fastp",
+      "pipeline_managed": [
+        "input/output FASTQ paths",
+        "thread count",
+        "quality and minimum-length baseline",
+        "JSON/HTML reports"
+      ],
+      "options": [
+        {
+          "id": "correction",
+          "label": "Correct paired-end overlaps",
+          "flag": "--correction",
+          "type": "boolean",
+          "default": false,
+          "description": "Correct mismatched bases in confidently overlapping read pairs."
+        },
+        {
+          "id": "trim_poly_g",
+          "label": "Trim poly-G tails",
+          "flag": "--trim_poly_g",
+          "type": "boolean",
+          "default": false,
+          "description": "Enable poly-G tail trimming."
+        },
+        {
+          "id": "trim_poly_x",
+          "label": "Trim poly-X tails",
+          "flag": "--trim_poly_x",
+          "type": "boolean",
+          "default": false,
+          "description": "Enable poly-X tail trimming."
+        },
+        {
+          "id": "low_complexity_filter",
+          "label": "Filter low-complexity reads",
+          "flag": "--low_complexity_filter",
+          "type": "boolean",
+          "default": false,
+          "description": "Discard reads below the selected sequence-complexity threshold."
+        },
+        {
+          "id": "complexity_threshold",
+          "label": "Complexity threshold (%)",
+          "flag": "--complexity_threshold",
+          "type": "integer",
+          "default": 30,
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Minimum percentage of adjacent bases that differ when low-complexity filtering is enabled."
+        }
+      ],
+      "offline_manual": "../Documentation/Offline manuals/RNA-seq processing/fastp.html"
+    },
+    {
+      "key": "cutadapt",
+      "label": "Cutadapt",
+      "summary": "Adapter trimming and read filtering for short reads.",
+      "manual": "https://cutadapt.readthedocs.io/en/stable/guide.html",
+      "pipeline_managed": [
+        "adapter sequences",
+        "input/output FASTQ paths",
+        "core count",
+        "baseline quality and minimum length"
+      ],
+      "options": [
+        {
+          "id": "trim_n",
+          "label": "Trim terminal N bases",
+          "flag": "--trim-n",
+          "type": "boolean",
+          "default": false,
+          "description": "Remove N bases from both ends of each read."
+        },
+        {
+          "id": "discard_untrimmed",
+          "label": "Discard reads without an adapter",
+          "flag": "--discard-untrimmed",
+          "type": "boolean",
+          "default": false,
+          "description": "Keep only reads in which a configured adapter was found."
+        },
+        {
+          "id": "no_indels",
+          "label": "Disallow indels in adapter matching",
+          "flag": "--no-indels",
+          "type": "boolean",
+          "default": false,
+          "description": "Permit substitutions only when matching adapters."
+        },
+        {
+          "id": "error_rate",
+          "label": "Maximum adapter error rate",
+          "flag": "--error-rate",
+          "type": "number",
+          "default": 0.1,
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Maximum error rate allowed in an adapter match."
+        },
+        {
+          "id": "overlap",
+          "label": "Minimum adapter overlap",
+          "flag": "--overlap",
+          "type": "integer",
+          "default": 3,
+          "minimum": 1,
+          "maximum": 1000,
+          "description": "Minimum number of matching adapter bases."
+        },
+        {
+          "id": "times",
+          "label": "Adapter-removal rounds",
+          "flag": "--times",
+          "type": "integer",
+          "default": 1,
+          "minimum": 1,
+          "maximum": 20,
+          "description": "Repeat adapter removal this many times per read."
+        },
+        {
+          "id": "max_n",
+          "label": "Maximum N content",
+          "flag": "--max-n",
+          "type": "number",
+          "default": 0.1,
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Discard reads whose N content exceeds this fraction."
+        }
+      ],
+      "offline_manual": "../Documentation/Offline manuals/RNA-seq processing/cutadapt.html"
+    },
+    {
+      "key": "multiqc",
+      "label": "MultiQC",
+      "summary": "Aggregates quality-control reports across all samples.",
+      "manual": "https://docs.seqera.io/multiqc/getting_started/running_multiqc/",
+      "pipeline_managed": [
+        "scan directory",
+        "--outdir",
+        "--filename",
+        "--force"
+      ],
+      "options": [
+        {
+          "id": "ignore_symlinks",
+          "label": "Ignore symbolic links",
+          "flag": "--ignore-symlinks",
+          "type": "boolean",
+          "default": false,
+          "description": "Do not traverse symbolic links while scanning reports."
+        },
+        {
+          "id": "require_logs",
+          "label": "Require requested module logs",
+          "flag": "--require-logs",
+          "type": "boolean",
+          "default": false,
+          "description": "Fail if an explicitly selected module finds no logs."
+        },
+        {
+          "id": "title",
+          "label": "Report title",
+          "flag": "--title",
+          "type": "text",
+          "default": "",
+          "description": "Custom title shown inside the MultiQC report."
+        },
+        {
+          "id": "ignore",
+          "label": "Ignore path glob",
+          "flag": "--ignore",
+          "type": "text",
+          "default": "",
+          "description": "Ignore one filename or path glob while scanning."
+        }
+      ],
+      "offline_manual": "../Documentation/Offline manuals/RNA-seq processing/multiqc.html"
+    },
+    {
+      "key": "bowtie2_build",
+      "label": "Bowtie2 build",
+      "summary": "Builds the Bowtie2 reference index.",
+      "manual": "https://bowtie-bio.sourceforge.net/bowtie2/manual.shtml",
+      "pipeline_managed": [
+        "reference FASTA",
+        "index prefix",
+        "--threads"
+      ],
+      "options": [
+        {
+          "id": "large_index",
+          "label": "Force a large index",
+          "flag": "--large-index",
+          "type": "boolean",
+          "default": false,
+          "description": "Use the large-index format even for a small reference."
+        },
+        {
+          "id": "packed",
+          "label": "Use packed strings",
+          "flag": "--packed",
+          "type": "boolean",
+          "default": false,
+          "description": "Reduce memory use during index construction at a speed cost."
+        },
+        {
+          "id": "offrate",
+          "label": "Suffix-array sampling rate",
+          "flag": "--offrate",
+          "type": "integer",
+          "default": 4,
+          "minimum": 1,
+          "maximum": 12,
+          "description": "Larger values create a smaller, slower index."
+        },
+        {
+          "id": "ftabchars",
+          "label": "Lookup-table prefix length",
+          "flag": "--ftabchars",
+          "type": "integer",
+          "default": 10,
+          "minimum": 1,
+          "maximum": 16,
+          "description": "Number of initial characters used by the lookup table."
+        }
+      ],
+      "offline_manual": "../Documentation/Offline manuals/RNA-seq processing/bowtie2_build.html"
+    },
+    {
+      "key": "bowtie2",
+      "label": "Bowtie2 alignment",
+      "summary": "Accuracy-first short-read alignment with preset and end-to-end/local mode configured here.",
+      "manual": "https://bowtie-bio.sourceforge.net/bowtie2/manual.shtml",
+      "pipeline_managed": [
+        "reads",
+        "index",
+        "read groups",
+        "threads",
+        "paired-end discordant/mixed-read policy"
+      ],
+      "options": [
+        {
+          "id": "preset",
+          "label": "Alignment preset",
+          "flag": "",
+          "type": "pipeline_setting",
+          "setting": "bowtie2_preset",
+          "default": "sensitive",
+          "choices": [
+            "default",
+            "very-fast",
+            "fast",
+            "sensitive",
+            "very-sensitive"
+          ],
+          "always_used": true,
+          "description": "Bowtie2 effort/sensitivity preset. Sensitive is the application default; default uses Bowtie2's built-in preset."
+        },
+        {
+          "id": "mode",
+          "label": "Alignment mode",
+          "flag": "",
+          "type": "pipeline_setting",
+          "setting": "bowtie2_mode",
+          "default": "end-to-end",
+          "choices": [
+            "end-to-end",
+            "local"
+          ],
+          "always_used": true,
+          "description": "End-to-end requires the full read to align; local allows soft-clipped ends."
+        },
+        {
+          "id": "seed_mismatches",
+          "label": "Seed mismatches",
+          "flag": "-N",
+          "type": "choice",
+          "default": "0",
+          "choices": [
+            "0",
+            "1"
+          ],
+          "description": "Maximum mismatches allowed in a seed."
+        },
+        {
+          "id": "seed_length",
+          "label": "Seed length",
+          "flag": "-L",
+          "type": "integer",
+          "default": 22,
+          "minimum": 4,
+          "maximum": 32,
+          "description": "Length of each seed substring."
+        },
+        {
+          "id": "score_min",
+          "label": "Minimum-score function",
+          "flag": "--score-min",
+          "type": "text",
+          "default": "L,-0.6,-0.6",
+          "description": "Bowtie2 function defining the minimum valid alignment score."
+        },
+        {
+          "id": "dovetail",
+          "label": "Allow dovetailing pairs",
+          "flag": "--dovetail",
+          "type": "boolean",
+          "default": false,
+          "description": "Treat dovetailing paired-end alignments as concordant."
+        },
+        {
+          "id": "no_overlap",
+          "label": "Reject overlapping mates",
+          "flag": "--no-overlap",
+          "type": "boolean",
+          "default": false,
+          "description": "Do not consider overlapping mate alignments concordant."
+        },
+        {
+          "id": "no_contain",
+          "label": "Reject contained mates",
+          "flag": "--no-contain",
+          "type": "boolean",
+          "default": false,
+          "description": "Do not consider a mate contained within the other concordant."
+        },
+        {
+          "id": "no_unal",
+          "label": "Suppress unaligned SAM records",
+          "flag": "--no-unal",
+          "type": "boolean",
+          "default": false,
+          "description": "Omit unaligned reads from Bowtie2 SAM output."
+        },
+        {
+          "id": "ignore_quals",
+          "label": "Ignore base qualities",
+          "flag": "--ignore-quals",
+          "type": "boolean",
+          "default": false,
+          "description": "Treat all mismatch quality penalties as the highest quality."
+        }
+      ],
+      "offline_manual": "../Documentation/Offline manuals/RNA-seq processing/bowtie2.html"
+    },
+    {
+      "key": "bwa_mem2_index",
+      "label": "BWA-MEM2 index",
+      "summary": "Builds the BWA-MEM2 index. Its useful arguments are workflow-owned, so no curated override is offered.",
+      "manual": "https://github.com/bwa-mem2/bwa-mem2",
+      "pipeline_managed": [
+        "reference FASTA",
+        "index prefix and expected index files"
+      ],
+      "options": [],
+      "offline_manual": "../Documentation/Offline manuals/RNA-seq processing/bwa_mem2_index.html"
+    },
+    {
+      "key": "bwa_mem2",
+      "label": "BWA-MEM2 alignment",
+      "summary": "Alternative short-read alignment used for accuracy auditing or as a primary method.",
+      "manual": "https://github.com/bwa-mem2/bwa-mem2",
+      "pipeline_managed": [
+        "reads",
+        "reference index",
+        "threads",
+        "read group",
+        "supplementary-alignment clipping policy"
+      ],
+      "options": [
+        {
+          "id": "min_seed_length",
+          "label": "Minimum seed length",
+          "flag": "-k",
+          "type": "integer",
+          "default": 19,
+          "minimum": 1,
+          "maximum": 100,
+          "description": "Minimum exact-match seed length."
+        },
+        {
+          "id": "band_width",
+          "label": "Alignment band width",
+          "flag": "-w",
+          "type": "integer",
+          "default": 100,
+          "minimum": 1,
+          "maximum": 10000,
+          "description": "Band width used for extension alignment."
+        },
+        {
+          "id": "mismatch_penalty",
+          "label": "Mismatch penalty",
+          "flag": "-B",
+          "type": "integer",
+          "default": 4,
+          "minimum": 1,
+          "maximum": 100,
+          "description": "Penalty assigned to a mismatch."
+        },
+        {
+          "id": "gap_open",
+          "label": "Gap-open penalties",
+          "flag": "-O",
+          "type": "text",
+          "default": "6,6",
+          "description": "Deletion and insertion gap-open penalties."
+        },
+        {
+          "id": "gap_extension",
+          "label": "Gap-extension penalties",
+          "flag": "-E",
+          "type": "text",
+          "default": "1,1",
+          "description": "Deletion and insertion gap-extension penalties."
+        },
+        {
+          "id": "mark_shorter_split",
+          "label": "Mark shorter split hits secondary",
+          "flag": "-M",
+          "type": "boolean",
+          "default": false,
+          "description": "Compatibility behavior used by some Picard workflows."
+        }
+      ],
+      "offline_manual": "../Documentation/Offline manuals/RNA-seq processing/bwa_mem2.html"
+    },
+    {
+      "key": "hisat2_build",
+      "label": "HISAT2 build",
+      "summary": "Builds the unspliced HISAT2 reference index.",
+      "manual": "https://daehwankimlab.github.io/hisat2/manual/",
+      "pipeline_managed": [
+        "reference FASTA",
+        "index prefix",
+        "threads"
+      ],
+      "options": [
+        {
+          "id": "large_index",
+          "label": "Force a large index",
+          "flag": "--large-index",
+          "type": "boolean",
+          "default": false,
+          "description": "Use the large-index format regardless of reference size."
+        },
+        {
+          "id": "packed",
+          "label": "Use packed strings",
+          "flag": "--packed",
+          "type": "boolean",
+          "default": false,
+          "description": "Reduce memory during index construction at a speed cost."
+        },
+        {
+          "id": "offrate",
+          "label": "Suffix-array sampling rate",
+          "flag": "--offrate",
+          "type": "integer",
+          "default": 4,
+          "minimum": 1,
+          "maximum": 12,
+          "description": "Larger values create a smaller, slower index."
+        },
+        {
+          "id": "ftabchars",
+          "label": "Lookup-table prefix length",
+          "flag": "--ftabchars",
+          "type": "integer",
+          "default": 10,
+          "minimum": 1,
+          "maximum": 16,
+          "description": "Number of initial characters used by the lookup table."
+        }
+      ],
+      "offline_manual": "../Documentation/Offline manuals/RNA-seq processing/hisat2_build.html"
+    },
+    {
+      "key": "hisat2",
+      "label": "HISAT2 alignment",
+      "summary": "HISAT2 configured for bacterial, no-splice, no-softclip alignment.",
+      "manual": "https://daehwankimlab.github.io/hisat2/manual/",
+      "pipeline_managed": [
+        "reads",
+        "index",
+        "read groups",
+        "threads",
+        "--no-spliced-alignment",
+        "--no-softclip"
+      ],
+      "options": [
+        {
+          "id": "sensitivity",
+          "label": "Sensitivity preset",
+          "flag": "",
+          "type": "choice_flag",
+          "default": "default",
+          "choices": [
+            "default",
+            "--very-fast",
+            "--fast",
+            "--sensitive",
+            "--very-sensitive"
+          ],
+          "description": "Select a HISAT2 effort/sensitivity preset; default adds no preset flag."
+        },
+        {
+          "id": "seed_mismatches",
+          "label": "Seed mismatches",
+          "flag": "-N",
+          "type": "choice",
+          "default": "0",
+          "choices": [
+            "0",
+            "1"
+          ],
+          "description": "Maximum mismatches allowed in a seed."
+        },
+        {
+          "id": "seed_length",
+          "label": "Seed length",
+          "flag": "-L",
+          "type": "integer",
+          "default": 20,
+          "minimum": 4,
+          "maximum": 32,
+          "description": "Length of each seed substring."
+        },
+        {
+          "id": "score_min",
+          "label": "Minimum-score function",
+          "flag": "--score-min",
+          "type": "text",
+          "default": "L,0,-0.2",
+          "description": "Function defining the minimum valid alignment score."
+        },
+        {
+          "id": "no_unal",
+          "label": "Suppress unaligned SAM records",
+          "flag": "--no-unal",
+          "type": "boolean",
+          "default": false,
+          "description": "Omit unaligned reads from HISAT2 SAM output."
+        },
+        {
+          "id": "ignore_quals",
+          "label": "Ignore base qualities",
+          "flag": "--ignore-quals",
+          "type": "boolean",
+          "default": false,
+          "description": "Use constant mismatch penalties instead of qualities."
+        }
+      ],
+      "offline_manual": "../Documentation/Offline manuals/RNA-seq processing/hisat2.html"
+    },
+    {
+      "key": "samtools_faidx",
+      "label": "SAMtools faidx",
+      "summary": "Creates the reference FASTA index required by later tools. Output-changing flags are intentionally protected.",
+      "manual": "https://www.htslib.org/doc/samtools-faidx.html",
+      "pipeline_managed": [
+        "reference FASTA",
+        "FAI output identity"
+      ],
+      "options": [],
+      "offline_manual": "../Documentation/Offline manuals/RNA-seq processing/samtools_faidx.html"
+    },
+    {
+      "key": "samtools_sort",
+      "label": "SAMtools sort",
+      "summary": "Creates coordinate-sorted BAM files for counting, coverage and indexing.",
+      "manual": "https://www.htslib.org/doc/samtools-sort.html",
+      "pipeline_managed": [
+        "coordinate sort order",
+        "input stream",
+        "output BAM",
+        "threads"
+      ],
+      "options": [
+        {
+          "id": "compression_level",
+          "label": "BAM compression level",
+          "flag": "-l",
+          "type": "choice",
+          "default": "-1",
+          "choices": [
+            "-1",
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9"
+          ],
+          "description": "0 is fastest/largest; 9 is smallest/slowest; -1 uses the library default."
+        },
+        {
+          "id": "memory_per_thread",
+          "label": "Memory per thread",
+          "flag": "-m",
+          "type": "text",
+          "default": "768M",
+          "description": "Approximate maximum memory per sorting thread, with K/M/G suffix."
+        },
+        {
+          "id": "no_pg",
+          "label": "Do not add a @PG line",
+          "flag": "--no-PG",
+          "type": "boolean",
+          "default": false,
+          "description": "Suppress the SAM header program record for this command."
+        }
+      ],
+      "offline_manual": "../Documentation/Offline manuals/RNA-seq processing/samtools_sort.html"
+    },
+    {
+      "key": "samtools_merge",
+      "label": "SAMtools merge",
+      "summary": "Combines technical runs belonging to the same biological sample.",
+      "manual": "https://www.htslib.org/doc/samtools-merge.html",
+      "pipeline_managed": [
+        "input BAMs",
+        "output BAM",
+        "overwrite behavior",
+        "threads",
+        "coordinate order"
+      ],
+      "options": [
+        {
+          "id": "combine_pg",
+          "label": "Combine colliding @PG IDs",
+          "flag": "-c",
+          "type": "boolean",
+          "default": false,
+          "description": "Keep a single program record when IDs collide."
+        },
+        {
+          "id": "combine_rg",
+          "label": "Combine colliding @RG IDs",
+          "flag": "-p",
+          "type": "boolean",
+          "default": false,
+          "description": "Keep a single read-group record when IDs collide."
+        },
+        {
+          "id": "no_pg",
+          "label": "Do not add a @PG line",
+          "flag": "--no-PG",
+          "type": "boolean",
+          "default": false,
+          "description": "Suppress the merge program record in the header."
+        }
+      ],
+      "offline_manual": "../Documentation/Offline manuals/RNA-seq processing/samtools_merge.html"
+    },
+    {
+      "key": "samtools_index",
+      "label": "SAMtools index",
+      "summary": "Creates the BAI index expected beside each final BAM. CSI/output-changing flags are protected.",
+      "manual": "https://www.htslib.org/doc/samtools-index.html",
+      "pipeline_managed": [
+        "input BAM",
+        "BAI output path",
+        "threads",
+        "index format"
+      ],
+      "options": [],
+      "offline_manual": "../Documentation/Offline manuals/RNA-seq processing/samtools_index.html"
+    },
+    {
+      "key": "samtools_fastq",
+      "label": "SAMtools fastq",
+      "summary": "Converts supplied or Dorado-produced BAM data to FASTQ.",
+      "manual": "https://www.htslib.org/doc/samtools-fasta.html",
+      "pipeline_managed": [
+        "input BAM",
+        "stdout FASTQ stream",
+        "threads",
+        "compression pipe"
+      ],
+      "options": [
+        {
+          "id": "use_names",
+          "label": "Use read names",
+          "flag": "-n",
+          "type": "boolean",
+          "default": false,
+          "description": "Use the read name instead of adding /1 and /2 suffixes."
+        },
+        {
+          "id": "always_suffix",
+          "label": "Always add /1 and /2",
+          "flag": "-N",
+          "type": "boolean",
+          "default": false,
+          "description": "Always append mate suffixes to read names."
+        },
+        {
+          "id": "use_oq",
+          "label": "Use OQ quality values",
+          "flag": "-O",
+          "type": "boolean",
+          "default": false,
+          "description": "Use original qualities from the OQ tag when present."
+        },
+        {
+          "id": "copy_tags",
+          "label": "Copy RG, BC and QT tags",
+          "flag": "-t",
+          "type": "boolean",
+          "default": false,
+          "description": "Add common read-group and barcode tags to FASTQ headers."
+        }
+      ],
+      "offline_manual": "../Documentation/Offline manuals/RNA-seq processing/samtools_fastq.html"
+    },
+    {
+      "key": "samtools_quickcheck",
+      "label": "SAMtools quickcheck",
+      "summary": "Verifies BAM headers and end-of-file blocks. Its verbose integrity behavior is workflow-owned.",
+      "manual": "https://www.htslib.org/doc/samtools-quickcheck.html",
+      "pipeline_managed": [
+        "input BAM",
+        "verbose failure reporting",
+        "success exit status"
+      ],
+      "options": [],
+      "offline_manual": "../Documentation/Offline manuals/RNA-seq processing/samtools_quickcheck.html"
+    },
+    {
+      "key": "samtools_flagstat",
+      "label": "SAMtools flagstat",
+      "summary": "Produces alignment flag statistics parsed into the suite's alignment summary. Report-format changes are therefore workflow-owned.",
+      "manual": "https://www.htslib.org/doc/samtools-flagstat.html",
+      "pipeline_managed": [
+        "input BAM",
+        "threads",
+        "text report format",
+        "report destination and downstream summary parser"
+      ],
+      "options": [],
+      "offline_manual": "../Documentation/Offline manuals/RNA-seq processing/samtools_flagstat.html"
+    },
+    {
+      "key": "samtools_stats",
+      "label": "SAMtools stats",
+      "summary": "Produces detailed alignment statistics for audit and QC.",
+      "manual": "https://www.htslib.org/doc/samtools-stats.html",
+      "pipeline_managed": [
+        "input BAM",
+        "threads",
+        "report destination"
+      ],
+      "options": [
+        {
+          "id": "remove_overlaps",
+          "label": "Remove paired-read overlaps",
+          "flag": "--remove-overlaps",
+          "type": "boolean",
+          "default": false,
+          "description": "Avoid counting overlapped paired-end bases twice in statistics."
+        },
+        {
+          "id": "required_flag",
+          "label": "Required SAM flags",
+          "flag": "--required-flag",
+          "type": "text",
+          "default": "0",
+          "description": "Include only reads containing all specified SAM flag bits."
+        },
+        {
+          "id": "filtering_flag",
+          "label": "Excluded SAM flags",
+          "flag": "--filtering-flag",
+          "type": "text",
+          "default": "0",
+          "description": "Exclude reads containing any specified SAM flag bits."
+        }
+      ],
+      "offline_manual": "../Documentation/Offline manuals/RNA-seq processing/samtools_stats.html"
+    },
+    {
+      "key": "samtools_idxstats",
+      "label": "SAMtools idxstats",
+      "summary": "Reports mapped and unmapped read counts per reference sequence. Input/index arguments are protected.",
+      "manual": "https://www.htslib.org/doc/samtools-idxstats.html",
+      "pipeline_managed": [
+        "input BAM",
+        "BAI lookup",
+        "report destination"
+      ],
+      "options": [],
+      "offline_manual": "../Documentation/Offline manuals/RNA-seq processing/samtools_idxstats.html"
+    },
+    {
+      "key": "dorado",
+      "label": "Dorado basecaller",
+      "summary": "Basecalls Oxford Nanopore POD5 input using the selected HAC or SUP model.",
+      "manual": "https://software-docs.nanoporetech.com/dorado/latest/basecaller/simplex/",
+      "pipeline_managed": [
+        "model",
+        "POD5 input",
+        "BAM output stream"
+      ],
+      "options": [
+        {
+          "id": "device",
+          "label": "Compute device",
+          "flag": "--device",
+          "type": "choice",
+          "default": "auto",
+          "choices": [
+            "auto",
+            "cpu",
+            "cuda:all",
+            "cuda:0"
+          ],
+          "description": "Select automatic, CPU, all NVIDIA GPUs, or the first NVIDIA GPU in the WSL/Linux runtime."
+        },
+        {
+          "id": "batchsize",
+          "label": "Inference batch size",
+          "flag": "--batchsize",
+          "type": "integer",
+          "default": 0,
+          "minimum": 0,
+          "maximum": 1000000,
+          "description": "0 leaves hardware-specific selection to Dorado; larger values use more accelerator memory."
+        },
+        {
+          "id": "min_qscore",
+          "label": "Minimum mean Q score",
+          "flag": "--min-qscore",
+          "type": "number",
+          "default": 0,
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Discard basecalls below this mean quality threshold."
+        },
+        {
+          "id": "emit_moves",
+          "label": "Write move-table tags",
+          "flag": "--emit-moves",
+          "type": "boolean",
+          "default": false,
+          "description": "Store the move table in mv tags for compatible downstream uses."
+        },
+        {
+          "id": "recursive",
+          "label": "Scan POD5 folders recursively",
+          "flag": "--recursive",
+          "type": "boolean",
+          "default": false,
+          "description": "Search subdirectories for POD5 files."
+        }
+      ],
+      "offline_manual": "../Documentation/Offline manuals/RNA-seq processing/dorado.html"
+    },
+    {
+      "key": "chopper",
+      "label": "Chopper",
+      "summary": "Optional quality and length filtering for long reads.",
+      "manual": "https://github.com/wdecoster/chopper",
+      "pipeline_managed": [
+        "stdin/stdout streams",
+        "threads",
+        "baseline minimum quality and length"
+      ],
+      "options": [
+        {
+          "id": "maximum_length",
+          "label": "Maximum read length",
+          "flag": "--maxlength",
+          "type": "integer",
+          "default": 1000000,
+          "minimum": 1,
+          "maximum": 1000000000,
+          "description": "Discard reads longer than this many bases. Leave Use unchecked for Chopper's unrestricted maximum."
+        },
+        {
+          "id": "inverse",
+          "label": "Keep reads that fail filters",
+          "flag": "--inverse",
+          "type": "boolean",
+          "default": false,
+          "description": "Invert the filtering decision for diagnostic use."
+        }
+      ],
+      "offline_manual": "../Documentation/Offline manuals/RNA-seq processing/chopper.html"
+    },
+    {
+      "key": "pigz",
+      "label": "pigz compression",
+      "summary": "Parallel gzip compression for generated FASTQ files.",
+      "manual": "https://zlib.net/pigz/",
+      "pipeline_managed": [
+        "stdin/stdout streams",
+        "thread count",
+        "compressed output path"
+      ],
+      "options": [
+        {
+          "id": "compression_level",
+          "label": "Compression level",
+          "flag": "",
+          "type": "choice_flag",
+          "default": "default",
+          "choices": [
+            "default",
+            "-1",
+            "-2",
+            "-3",
+            "-4",
+            "-5",
+            "-6",
+            "-7",
+            "-8",
+            "-9"
+          ],
+          "description": "1 is fastest/largest; 9 is slowest/smallest; default uses pigz's standard level."
+        },
+        {
+          "id": "rsyncable",
+          "label": "Rsync-friendly blocks",
+          "flag": "--rsyncable",
+          "type": "boolean",
+          "default": false,
+          "description": "Reset compression blocks at input-dependent boundaries."
+        },
+        {
+          "id": "independent",
+          "label": "Independent compression blocks",
+          "flag": "--independent",
+          "type": "boolean",
+          "default": false,
+          "description": "Compress blocks independently for damage isolation."
+        },
+        {
+          "id": "no_name",
+          "label": "Do not store name/time",
+          "flag": "--no-name",
+          "type": "boolean",
+          "default": false,
+          "description": "Omit original filename and timestamp metadata."
+        }
+      ],
+      "offline_manual": "../Documentation/Offline manuals/RNA-seq processing/pigz.html"
+    },
+    {
+      "key": "nanoplot",
+      "label": "NanoPlot",
+      "summary": "Quality and length plots for long-read FASTQ data.",
+      "manual": "https://github.com/wdecoster/NanoPlot",
+      "pipeline_managed": [
+        "input FASTQ",
+        "output directory",
+        "threads",
+        "run prefix"
+      ],
+      "options": [
+        {
+          "id": "plot_type",
+          "label": "Distribution plot type",
+          "flag": "--plots",
+          "type": "choice",
+          "default": "kde",
+          "choices": [
+            "kde",
+            "dot",
+            "hex"
+          ],
+          "description": "Rendering method for bivariate distribution plots."
+        },
+        {
+          "id": "n50",
+          "label": "Show N50 mark",
+          "flag": "--N50",
+          "type": "boolean",
+          "default": false,
+          "description": "Add the read N50 value to length plots."
+        },
+        {
+          "id": "log_length",
+          "label": "Log-transform read length",
+          "flag": "--loglength",
+          "type": "boolean",
+          "default": false,
+          "description": "Use a logarithmic read-length axis."
+        },
+        {
+          "id": "downsample",
+          "label": "Downsample to N reads",
+          "flag": "--downsample",
+          "type": "integer",
+          "default": 10000,
+          "minimum": 1,
+          "maximum": 1000000000,
+          "description": "Use at most this many reads for plotting. Leave Use unchecked to disable explicit downsampling."
+        },
+        {
+          "id": "format",
+          "label": "Static plot format",
+          "flag": "--format",
+          "type": "choice",
+          "default": "png",
+          "choices": [
+            "png",
+            "jpg",
+            "svg",
+            "pdf"
+          ],
+          "description": "File format for static figures."
+        }
+      ],
+      "offline_manual": "../Documentation/Offline manuals/RNA-seq processing/nanoplot.html"
+    },
+    {
+      "key": "longqc",
+      "label": "LongQC",
+      "summary": "Optional long-read quality audit. Options vary substantially by LongQC revision, so use its linked manual for uncommon overrides.",
+      "manual": "https://github.com/yfukasawa/LongQC",
+      "pipeline_managed": [
+        "sampleqc action",
+        "platform preset",
+        "input FASTQ",
+        "output directory",
+        "run prefix"
+      ],
+      "options": [],
+      "offline_manual": "../Documentation/Offline manuals/RNA-seq processing/longqc.html"
+    },
+    {
+      "key": "minimap2",
+      "label": "minimap2",
+      "summary": "Primary or audit alignment for Oxford Nanopore and PacBio reads.",
+      "manual": "https://github.com/lh3/minimap2",
+      "pipeline_managed": [
+        "platform preset",
+        "SAM output",
+        "secondary-alignment policy",
+        "read group",
+        "threads",
+        "reference and reads"
+      ],
+      "options": [
+        {
+          "id": "kmer",
+          "label": "Minimizer k-mer length",
+          "flag": "-k",
+          "type": "integer",
+          "default": 15,
+          "minimum": 4,
+          "maximum": 28,
+          "description": "Length of minimizer k-mers."
+        },
+        {
+          "id": "window",
+          "label": "Minimizer window size",
+          "flag": "-w",
+          "type": "integer",
+          "default": 10,
+          "minimum": 1,
+          "maximum": 1000,
+          "description": "Window size used to select minimizers."
+        },
+        {
+          "id": "match_score",
+          "label": "Match score",
+          "flag": "-A",
+          "type": "integer",
+          "default": 2,
+          "minimum": 1,
+          "maximum": 100,
+          "description": "Score assigned to a matching base."
+        },
+        {
+          "id": "mismatch_penalty",
+          "label": "Mismatch penalty",
+          "flag": "-B",
+          "type": "integer",
+          "default": 4,
+          "minimum": 1,
+          "maximum": 100,
+          "description": "Penalty assigned to a mismatch."
+        },
+        {
+          "id": "gap_open",
+          "label": "Gap-open penalties",
+          "flag": "-O",
+          "type": "text",
+          "default": "4,24",
+          "description": "Short and long gap-open penalties."
+        },
+        {
+          "id": "gap_extension",
+          "label": "Gap-extension penalties",
+          "flag": "-E",
+          "type": "text",
+          "default": "2,1",
+          "description": "Short and long gap-extension penalties."
+        },
+        {
+          "id": "eqx",
+          "label": "Use = and X CIGAR operators",
+          "flag": "--eqx",
+          "type": "boolean",
+          "default": false,
+          "description": "Distinguish matches and mismatches in CIGAR output."
+        },
+        {
+          "id": "md",
+          "label": "Write MD tags",
+          "flag": "--MD",
+          "type": "boolean",
+          "default": false,
+          "description": "Add the MD mismatch tag to SAM records."
+        }
+      ],
+      "offline_manual": "../Documentation/Offline manuals/RNA-seq processing/minimap2.html"
+    },
+    {
+      "key": "winnowmap",
+      "label": "Winnowmap",
+      "summary": "Repeat-aware long-read audit alignment using a meryl repetitive-k-mer list.",
+      "manual": "https://github.com/marbl/Winnowmap",
+      "pipeline_managed": [
+        "platform preset",
+        "repetitive k-mer file",
+        "SAM output",
+        "secondary-alignment policy",
+        "read group",
+        "threads",
+        "reference and reads"
+      ],
+      "options": [
+        {
+          "id": "kmer",
+          "label": "Minimizer k-mer length",
+          "flag": "-k",
+          "type": "integer",
+          "default": 15,
+          "minimum": 4,
+          "maximum": 28,
+          "description": "Length of minimizer k-mers."
+        },
+        {
+          "id": "window",
+          "label": "Minimizer window size",
+          "flag": "-w",
+          "type": "integer",
+          "default": 10,
+          "minimum": 1,
+          "maximum": 1000,
+          "description": "Window size used to select minimizers."
+        },
+        {
+          "id": "mismatch_penalty",
+          "label": "Mismatch penalty",
+          "flag": "-B",
+          "type": "integer",
+          "default": 4,
+          "minimum": 1,
+          "maximum": 100,
+          "description": "Penalty assigned to a mismatch."
+        },
+        {
+          "id": "gap_open",
+          "label": "Gap-open penalties",
+          "flag": "-O",
+          "type": "text",
+          "default": "4,24",
+          "description": "Short and long gap-open penalties."
+        },
+        {
+          "id": "gap_extension",
+          "label": "Gap-extension penalties",
+          "flag": "-E",
+          "type": "text",
+          "default": "2,1",
+          "description": "Short and long gap-extension penalties."
+        },
+        {
+          "id": "eqx",
+          "label": "Use = and X CIGAR operators",
+          "flag": "--eqx",
+          "type": "boolean",
+          "default": false,
+          "description": "Distinguish matches and mismatches in CIGAR output."
+        },
+        {
+          "id": "md",
+          "label": "Write MD tags",
+          "flag": "--MD",
+          "type": "boolean",
+          "default": false,
+          "description": "Add the MD mismatch tag to SAM records."
+        }
+      ],
+      "offline_manual": "../Documentation/Offline manuals/RNA-seq processing/winnowmap.html"
+    },
+    {
+      "key": "meryl_count",
+      "label": "meryl count",
+      "summary": "Counts reference k-mers used to identify repeats for Winnowmap.",
+      "manual": "https://meryl.readthedocs.io/",
+      "pipeline_managed": [
+        "k-mer length",
+        "count operation",
+        "output database",
+        "reference FASTA"
+      ],
+      "options": [
+        {
+          "id": "memory",
+          "label": "Memory limit (GB)",
+          "flag": "memory",
+          "type": "key_value",
+          "default": "4",
+          "description": "Approximate memory limit passed as memory=GB."
+        },
+        {
+          "id": "threads",
+          "label": "Worker threads",
+          "flag": "threads",
+          "type": "key_value",
+          "default": "4",
+          "description": "Thread count passed as threads=N."
+        }
+      ],
+      "offline_manual": "../Documentation/Offline manuals/RNA-seq processing/meryl_count.html"
+    },
+    {
+      "key": "meryl_print",
+      "label": "meryl print",
+      "summary": "Prints the high-frequency k-mers selected for Winnowmap. Threshold and database identity are workflow-owned.",
+      "manual": "https://meryl.readthedocs.io/",
+      "pipeline_managed": [
+        "print operation",
+        "frequency threshold",
+        "meryl database",
+        "output k-mer file"
+      ],
+      "options": [],
+      "offline_manual": "../Documentation/Offline manuals/RNA-seq processing/meryl_print.html"
+    },
+    {
+      "key": "featurecounts",
+      "label": "featureCounts",
+      "summary": "Primary integer gene counting and strand-orientation auditing.",
+      "manual": "https://subread.sourceforge.net/featureCounts.html",
+      "pipeline_managed": [
+        "SAF annotation",
+        "BAM input",
+        "output table",
+        "threads",
+        "strand",
+        "MAPQ",
+        "primary alignments",
+        "paired/long-read mode"
+      ],
+      "options": [
+        {
+          "id": "multi_overlap",
+          "label": "Assign multi-overlap reads",
+          "flag": "-O",
+          "type": "boolean",
+          "default": false,
+          "description": "Assign a read to every overlapping feature instead of treating it as ambiguous."
+        },
+        {
+          "id": "multi_mapping",
+          "label": "Count multi-mapping reads",
+          "flag": "-M",
+          "type": "boolean",
+          "default": false,
+          "description": "Include reads reported at multiple genomic locations."
+        },
+        {
+          "id": "largest_overlap",
+          "label": "Choose largest overlap",
+          "flag": "--largestOverlap",
+          "type": "boolean",
+          "default": false,
+          "description": "Assign each read to the feature with the largest overlap."
+        },
+        {
+          "id": "minimum_overlap",
+          "label": "Minimum overlapping bases",
+          "flag": "--minOverlap",
+          "type": "integer",
+          "default": 1,
+          "minimum": 1,
+          "maximum": 1000000,
+          "description": "Minimum read bases that must overlap a feature."
+        },
+        {
+          "id": "fraction_overlap",
+          "label": "Minimum read overlap fraction",
+          "flag": "--fracOverlap",
+          "type": "number",
+          "default": 0,
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Minimum fraction of the read that must overlap a feature."
+        },
+        {
+          "id": "ignore_duplicates",
+          "label": "Ignore duplicate-marked reads",
+          "flag": "--ignoreDup",
+          "type": "boolean",
+          "default": false,
+          "description": "Exclude reads carrying the duplicate flag."
+        }
+      ],
+      "offline_manual": "../Documentation/Offline manuals/RNA-seq processing/featurecounts.html"
+    },
+    {
+      "key": "htseq_count",
+      "label": "HTSeq count",
+      "summary": "Alternative gene-counting engine for position-sorted BAM files.",
+      "manual": "https://htseq.readthedocs.io/en/latest/htseqcount.html",
+      "pipeline_managed": [
+        "BAM and annotation inputs",
+        "format",
+        "sort order",
+        "strand",
+        "feature type",
+        "ID attribute",
+        "nonunique mode",
+        "output table"
+      ],
+      "options": [
+        {
+          "id": "minaqual",
+          "label": "Minimum alignment quality",
+          "flag": "--minaqual",
+          "type": "integer",
+          "default": 10,
+          "minimum": 0,
+          "maximum": 255,
+          "description": "Skip alignments below this MAPQ threshold."
+        },
+        {
+          "id": "secondary",
+          "label": "Secondary alignments",
+          "flag": "--secondary-alignments",
+          "type": "choice",
+          "default": "score",
+          "choices": [
+            "score",
+            "ignore"
+          ],
+          "description": "Choose whether secondary alignments affect ambiguity scoring or are ignored."
+        },
+        {
+          "id": "supplementary",
+          "label": "Supplementary alignments",
+          "flag": "--supplementary-alignments",
+          "type": "choice",
+          "default": "score",
+          "choices": [
+            "score",
+            "ignore"
+          ],
+          "description": "Choose whether supplementary alignments affect ambiguity scoring or are ignored."
+        },
+        {
+          "id": "max_buffer",
+          "label": "Maximum buffered reads",
+          "flag": "--max-reads-in-buffer",
+          "type": "integer",
+          "default": 30000000,
+          "minimum": 1000,
+          "maximum": 1000000000,
+          "description": "Buffer limit used for paired reads in position order."
+        }
+      ],
+      "offline_manual": "../Documentation/Offline manuals/RNA-seq processing/htseq_count.html"
+    },
+    {
+      "key": "fadu",
+      "label": "FADU",
+      "summary": "Optional bacterial overlap-aware fractional-count audit. Its current workflow-critical arguments are protected.",
+      "manual": "https://github.com/IGS/FADU",
+      "pipeline_managed": [
+        "annotation",
+        "BAM input",
+        "output directory",
+        "strand",
+        "feature and ID fields",
+        "paired-read mode"
+      ],
+      "options": [],
+      "offline_manual": "../Documentation/Offline manuals/RNA-seq processing/fadu.html"
+    },
+    {
+      "key": "bamcoverage",
+      "label": "deepTools bamCoverage",
+      "summary": "Creates raw or CPM-normalized strand-aware BigWig/bedGraph coverage tracks.",
+      "manual": "https://deeptools.readthedocs.io/en/latest/content/tools/bamCoverage.html",
+      "pipeline_managed": [
+        "BAM input",
+        "output file and format",
+        "bin size",
+        "threads",
+        "MAPQ",
+        "SAM flags",
+        "normalization",
+        "strand",
+        "exact scaling"
+      ],
+      "options": [
+        {
+          "id": "smooth_length",
+          "label": "Smoothing window length",
+          "flag": "--smoothLength",
+          "type": "integer",
+          "default": 1,
+          "minimum": 1,
+          "maximum": 1000000,
+          "description": "Average neighboring bins over this window; values not exceeding bin size have no effect."
+        },
+        {
+          "id": "center_reads",
+          "label": "Center reads/fragments",
+          "flag": "--centerReads",
+          "type": "boolean",
+          "default": false,
+          "description": "Center each read or fragment before calculating coverage."
+        },
+        {
+          "id": "ignore_duplicates",
+          "label": "Ignore duplicate reads",
+          "flag": "--ignoreDuplicates",
+          "type": "boolean",
+          "default": false,
+          "description": "Exclude reads with identical mapping positions according to deepTools rules."
+        },
+        {
+          "id": "skip_zeros",
+          "label": "Skip uncovered regions",
+          "flag": "--skipNonCoveredRegions",
+          "type": "boolean",
+          "default": false,
+          "description": "Omit zero-coverage regions instead of writing zero-valued bins."
+        },
+        {
+          "id": "scale_factor",
+          "label": "Additional scale factor",
+          "flag": "--scaleFactor",
+          "type": "number",
+          "default": 1,
+          "minimum": 0,
+          "maximum": 1000000000,
+          "description": "Multiply the pipeline-computed coverage values by this factor."
+        }
+      ],
+      "offline_manual": "../Documentation/Offline manuals/RNA-seq processing/bamcoverage.html"
+    }
+  ]
+}

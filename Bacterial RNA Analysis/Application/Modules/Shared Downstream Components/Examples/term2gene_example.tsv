@@ -1,0 +1,513 @@
+gene_id	term_id	term_name	source
+gene_0001	GO:0008152	metabolic process	GO
+gene_0001	GO:0006355	regulation of transcription	GO
+gene_0001	REG:StressR	StressR predicted regulon	Regulon
+gene_0002	GO:0008152	metabolic process	GO
+gene_0002	GO:0006355	regulation of transcription	GO
+gene_0002	REG:StressR	StressR predicted regulon	Regulon
+gene_0003	GO:0008152	metabolic process	GO
+gene_0003	GO:0006355	regulation of transcription	GO
+gene_0003	GO:0006412	translation	GO
+gene_0003	REG:StressR	StressR predicted regulon	Regulon
+gene_0004	GO:0008152	metabolic process	GO
+gene_0004	GO:0006355	regulation of transcription	GO
+gene_0004	GO:0006810	transport	GO
+gene_0004	REG:StressR	StressR predicted regulon	Regulon
+gene_0005	GO:0008152	metabolic process	GO
+gene_0005	GO:0006355	regulation of transcription	GO
+gene_0005	GO:0005975	carbohydrate metabolic process	GO
+gene_0005	REG:StressR	StressR predicted regulon	Regulon
+gene_0006	GO:0008152	metabolic process	GO
+gene_0006	GO:0006355	regulation of transcription	GO
+gene_0006	KEGG:ribosome	Ribosome	KEGG
+gene_0006	REG:StressR	StressR predicted regulon	Regulon
+gene_0007	GO:0008152	metabolic process	GO
+gene_0007	GO:0006355	regulation of transcription	GO
+gene_0007	KEGG:oxidative_phosphorylation	Oxidative phosphorylation	KEGG
+gene_0007	REG:StressR	StressR predicted regulon	Regulon
+gene_0008	GO:0006355	regulation of transcription	GO
+gene_0008	COG:J	Translation, ribosomal structure and biogenesis	COG
+gene_0008	REG:StressR	StressR predicted regulon	Regulon
+gene_0009	GO:0006355	regulation of transcription	GO
+gene_0009	COG:K	Transcription	COG
+gene_0009	REG:StressR	StressR predicted regulon	Regulon
+gene_0010	GO:0006355	regulation of transcription	GO
+gene_0010	COG:G	Carbohydrate transport and metabolism	COG
+gene_0010	REG:StressR	StressR predicted regulon	Regulon
+gene_0011	GO:0006355	regulation of transcription	GO
+gene_0011	REG:StressR	StressR predicted regulon	Regulon
+gene_0012	GO:0006355	regulation of transcription	GO
+gene_0012	REG:StressR	StressR predicted regulon	Regulon
+gene_0012	REG:MetR	MetR predicted regulon	Regulon
+gene_0013	GO:0008152	metabolic process	GO
+gene_0013	GO:0006355	regulation of transcription	GO
+gene_0013	REG:StressR	StressR predicted regulon	Regulon
+gene_0014	GO:0006355	regulation of transcription	GO
+gene_0014	REG:StressR	StressR predicted regulon	Regulon
+gene_0015	GO:0006355	regulation of transcription	GO
+gene_0015	GO:0006412	translation	GO
+gene_0015	REG:StressR	StressR predicted regulon	Regulon
+gene_0016	GO:0006355	regulation of transcription	GO
+gene_0016	GO:0006412	translation	GO
+gene_0016	GO:0006810	transport	GO
+gene_0016	REG:StressR	StressR predicted regulon	Regulon
+gene_0017	GO:0006355	regulation of transcription	GO
+gene_0017	GO:0006412	translation	GO
+gene_0017	GO:0005975	carbohydrate metabolic process	GO
+gene_0017	REG:StressR	StressR predicted regulon	Regulon
+gene_0018	GO:0006355	regulation of transcription	GO
+gene_0018	GO:0006412	translation	GO
+gene_0018	KEGG:ribosome	Ribosome	KEGG
+gene_0018	REG:StressR	StressR predicted regulon	Regulon
+gene_0019	GO:0006355	regulation of transcription	GO
+gene_0019	GO:0006412	translation	GO
+gene_0019	KEGG:oxidative_phosphorylation	Oxidative phosphorylation	KEGG
+gene_0019	REG:StressR	StressR predicted regulon	Regulon
+gene_0020	GO:0006355	regulation of transcription	GO
+gene_0020	GO:0006412	translation	GO
+gene_0020	COG:J	Translation, ribosomal structure and biogenesis	COG
+gene_0020	REG:StressR	StressR predicted regulon	Regulon
+gene_0021	GO:0008152	metabolic process	GO
+gene_0021	GO:0006412	translation	GO
+gene_0021	COG:K	Transcription	COG
+gene_0021	REG:MetR	MetR predicted regulon	Regulon
+gene_0022	GO:0008152	metabolic process	GO
+gene_0022	GO:0006810	transport	GO
+gene_0022	COG:G	Carbohydrate transport and metabolism	COG
+gene_0022	REG:MetR	MetR predicted regulon	Regulon
+gene_0023	GO:0008152	metabolic process	GO
+gene_0023	GO:0006810	transport	GO
+gene_0023	REG:StressR	StressR predicted regulon	Regulon
+gene_0023	REG:MetR	MetR predicted regulon	Regulon
+gene_0024	GO:0008152	metabolic process	GO
+gene_0024	GO:0006810	transport	GO
+gene_0024	REG:MetR	MetR predicted regulon	Regulon
+gene_0025	GO:0008152	metabolic process	GO
+gene_0025	GO:0006810	transport	GO
+gene_0025	REG:MetR	MetR predicted regulon	Regulon
+gene_0026	GO:0008152	metabolic process	GO
+gene_0026	GO:0006355	regulation of transcription	GO
+gene_0026	GO:0006810	transport	GO
+gene_0026	REG:MetR	MetR predicted regulon	Regulon
+gene_0027	GO:0008152	metabolic process	GO
+gene_0027	GO:0006412	translation	GO
+gene_0027	GO:0006810	transport	GO
+gene_0027	REG:MetR	MetR predicted regulon	Regulon
+gene_0028	GO:0008152	metabolic process	GO
+gene_0028	GO:0006810	transport	GO
+gene_0028	REG:MetR	MetR predicted regulon	Regulon
+gene_0029	GO:0008152	metabolic process	GO
+gene_0029	GO:0005975	carbohydrate metabolic process	GO
+gene_0029	REG:MetR	MetR predicted regulon	Regulon
+gene_0030	GO:0008152	metabolic process	GO
+gene_0030	GO:0005975	carbohydrate metabolic process	GO
+gene_0030	KEGG:ribosome	Ribosome	KEGG
+gene_0030	REG:MetR	MetR predicted regulon	Regulon
+gene_0031	GO:0008152	metabolic process	GO
+gene_0031	GO:0005975	carbohydrate metabolic process	GO
+gene_0031	KEGG:oxidative_phosphorylation	Oxidative phosphorylation	KEGG
+gene_0031	REG:MetR	MetR predicted regulon	Regulon
+gene_0032	GO:0008152	metabolic process	GO
+gene_0032	GO:0005975	carbohydrate metabolic process	GO
+gene_0032	COG:J	Translation, ribosomal structure and biogenesis	COG
+gene_0032	REG:MetR	MetR predicted regulon	Regulon
+gene_0033	GO:0008152	metabolic process	GO
+gene_0033	GO:0005975	carbohydrate metabolic process	GO
+gene_0033	COG:K	Transcription	COG
+gene_0033	REG:MetR	MetR predicted regulon	Regulon
+gene_0034	GO:0008152	metabolic process	GO
+gene_0034	GO:0005975	carbohydrate metabolic process	GO
+gene_0034	COG:G	Carbohydrate transport and metabolism	COG
+gene_0034	REG:MetR	MetR predicted regulon	Regulon
+gene_0035	GO:0008152	metabolic process	GO
+gene_0035	GO:0005975	carbohydrate metabolic process	GO
+gene_0035	REG:StressR	StressR predicted regulon	Regulon
+gene_0035	REG:MetR	MetR predicted regulon	Regulon
+gene_0036	GO:0008152	metabolic process	GO
+gene_0036	KEGG:ribosome	Ribosome	KEGG
+gene_0036	REG:MetR	MetR predicted regulon	Regulon
+gene_0037	GO:0008152	metabolic process	GO
+gene_0037	KEGG:ribosome	Ribosome	KEGG
+gene_0037	REG:MetR	MetR predicted regulon	Regulon
+gene_0038	GO:0008152	metabolic process	GO
+gene_0038	GO:0006355	regulation of transcription	GO
+gene_0038	KEGG:ribosome	Ribosome	KEGG
+gene_0038	REG:MetR	MetR predicted regulon	Regulon
+gene_0039	GO:0008152	metabolic process	GO
+gene_0039	GO:0006412	translation	GO
+gene_0039	KEGG:ribosome	Ribosome	KEGG
+gene_0039	REG:MetR	MetR predicted regulon	Regulon
+gene_0040	GO:0008152	metabolic process	GO
+gene_0040	GO:0006810	transport	GO
+gene_0040	KEGG:ribosome	Ribosome	KEGG
+gene_0040	REG:MetR	MetR predicted regulon	Regulon
+gene_0041	GO:0005975	carbohydrate metabolic process	GO
+gene_0041	KEGG:ribosome	Ribosome	KEGG
+gene_0042	KEGG:ribosome	Ribosome	KEGG
+gene_0043	KEGG:oxidative_phosphorylation	Oxidative phosphorylation	KEGG
+gene_0044	KEGG:oxidative_phosphorylation	Oxidative phosphorylation	KEGG
+gene_0044	COG:J	Translation, ribosomal structure and biogenesis	COG
+gene_0045	KEGG:oxidative_phosphorylation	Oxidative phosphorylation	KEGG
+gene_0045	COG:K	Transcription	COG
+gene_0046	KEGG:oxidative_phosphorylation	Oxidative phosphorylation	KEGG
+gene_0046	COG:G	Carbohydrate transport and metabolism	COG
+gene_0047	KEGG:oxidative_phosphorylation	Oxidative phosphorylation	KEGG
+gene_0047	REG:StressR	StressR predicted regulon	Regulon
+gene_0048	KEGG:oxidative_phosphorylation	Oxidative phosphorylation	KEGG
+gene_0048	REG:MetR	MetR predicted regulon	Regulon
+gene_0049	GO:0008152	metabolic process	GO
+gene_0049	KEGG:oxidative_phosphorylation	Oxidative phosphorylation	KEGG
+gene_0050	GO:0006355	regulation of transcription	GO
+gene_0050	COG:J	Translation, ribosomal structure and biogenesis	COG
+gene_0051	GO:0006412	translation	GO
+gene_0051	COG:J	Translation, ribosomal structure and biogenesis	COG
+gene_0052	GO:0006810	transport	GO
+gene_0052	COG:J	Translation, ribosomal structure and biogenesis	COG
+gene_0053	GO:0005975	carbohydrate metabolic process	GO
+gene_0053	COG:J	Translation, ribosomal structure and biogenesis	COG
+gene_0054	KEGG:ribosome	Ribosome	KEGG
+gene_0054	COG:J	Translation, ribosomal structure and biogenesis	COG
+gene_0055	KEGG:oxidative_phosphorylation	Oxidative phosphorylation	KEGG
+gene_0055	COG:J	Translation, ribosomal structure and biogenesis	COG
+gene_0056	COG:J	Translation, ribosomal structure and biogenesis	COG
+gene_0057	COG:K	Transcription	COG
+gene_0058	COG:K	Transcription	COG
+gene_0058	COG:G	Carbohydrate transport and metabolism	COG
+gene_0059	COG:K	Transcription	COG
+gene_0059	REG:StressR	StressR predicted regulon	Regulon
+gene_0060	COG:K	Transcription	COG
+gene_0060	REG:MetR	MetR predicted regulon	Regulon
+gene_0061	GO:0008152	metabolic process	GO
+gene_0061	COG:K	Transcription	COG
+gene_0062	GO:0006355	regulation of transcription	GO
+gene_0062	COG:K	Transcription	COG
+gene_0063	GO:0006412	translation	GO
+gene_0063	COG:K	Transcription	COG
+gene_0064	GO:0006810	transport	GO
+gene_0064	COG:G	Carbohydrate transport and metabolism	COG
+gene_0065	GO:0005975	carbohydrate metabolic process	GO
+gene_0065	COG:G	Carbohydrate transport and metabolism	COG
+gene_0066	KEGG:ribosome	Ribosome	KEGG
+gene_0066	COG:G	Carbohydrate transport and metabolism	COG
+gene_0067	KEGG:oxidative_phosphorylation	Oxidative phosphorylation	KEGG
+gene_0067	COG:G	Carbohydrate transport and metabolism	COG
+gene_0068	COG:J	Translation, ribosomal structure and biogenesis	COG
+gene_0068	COG:G	Carbohydrate transport and metabolism	COG
+gene_0069	COG:K	Transcription	COG
+gene_0069	COG:G	Carbohydrate transport and metabolism	COG
+gene_0070	COG:G	Carbohydrate transport and metabolism	COG
+gene_0071	REG:StressR	StressR predicted regulon	Regulon
+gene_0072	REG:StressR	StressR predicted regulon	Regulon
+gene_0072	REG:MetR	MetR predicted regulon	Regulon
+gene_0073	GO:0008152	metabolic process	GO
+gene_0073	REG:StressR	StressR predicted regulon	Regulon
+gene_0074	GO:0006355	regulation of transcription	GO
+gene_0074	REG:StressR	StressR predicted regulon	Regulon
+gene_0075	GO:0006412	translation	GO
+gene_0075	REG:StressR	StressR predicted regulon	Regulon
+gene_0076	GO:0006810	transport	GO
+gene_0076	REG:StressR	StressR predicted regulon	Regulon
+gene_0077	GO:0005975	carbohydrate metabolic process	GO
+gene_0077	REG:StressR	StressR predicted regulon	Regulon
+gene_0078	KEGG:ribosome	Ribosome	KEGG
+gene_0078	REG:MetR	MetR predicted regulon	Regulon
+gene_0079	KEGG:oxidative_phosphorylation	Oxidative phosphorylation	KEGG
+gene_0079	REG:MetR	MetR predicted regulon	Regulon
+gene_0080	COG:J	Translation, ribosomal structure and biogenesis	COG
+gene_0080	REG:MetR	MetR predicted regulon	Regulon
+gene_0081	COG:K	Transcription	COG
+gene_0081	REG:MetR	MetR predicted regulon	Regulon
+gene_0082	COG:G	Carbohydrate transport and metabolism	COG
+gene_0082	REG:MetR	MetR predicted regulon	Regulon
+gene_0083	REG:StressR	StressR predicted regulon	Regulon
+gene_0083	REG:MetR	MetR predicted regulon	Regulon
+gene_0084	REG:MetR	MetR predicted regulon	Regulon
+gene_0085	GO:0008152	metabolic process	GO
+gene_0086	GO:0008152	metabolic process	GO
+gene_0086	GO:0006355	regulation of transcription	GO
+gene_0087	GO:0008152	metabolic process	GO
+gene_0087	GO:0006412	translation	GO
+gene_0088	GO:0008152	metabolic process	GO
+gene_0088	GO:0006810	transport	GO
+gene_0089	GO:0008152	metabolic process	GO
+gene_0089	GO:0005975	carbohydrate metabolic process	GO
+gene_0090	GO:0008152	metabolic process	GO
+gene_0090	KEGG:ribosome	Ribosome	KEGG
+gene_0091	GO:0008152	metabolic process	GO
+gene_0091	KEGG:oxidative_phosphorylation	Oxidative phosphorylation	KEGG
+gene_0092	GO:0006355	regulation of transcription	GO
+gene_0092	COG:J	Translation, ribosomal structure and biogenesis	COG
+gene_0093	GO:0006355	regulation of transcription	GO
+gene_0093	COG:K	Transcription	COG
+gene_0094	GO:0006355	regulation of transcription	GO
+gene_0094	COG:G	Carbohydrate transport and metabolism	COG
+gene_0095	GO:0006355	regulation of transcription	GO
+gene_0095	REG:StressR	StressR predicted regulon	Regulon
+gene_0096	GO:0006355	regulation of transcription	GO
+gene_0096	REG:MetR	MetR predicted regulon	Regulon
+gene_0097	GO:0008152	metabolic process	GO
+gene_0097	GO:0006355	regulation of transcription	GO
+gene_0098	GO:0006355	regulation of transcription	GO
+gene_0099	GO:0006412	translation	GO
+gene_0100	GO:0006412	translation	GO
+gene_0100	GO:0006810	transport	GO
+gene_0101	GO:0006412	translation	GO
+gene_0101	GO:0005975	carbohydrate metabolic process	GO
+gene_0102	GO:0006412	translation	GO
+gene_0102	KEGG:ribosome	Ribosome	KEGG
+gene_0103	GO:0006412	translation	GO
+gene_0103	KEGG:oxidative_phosphorylation	Oxidative phosphorylation	KEGG
+gene_0104	GO:0006412	translation	GO
+gene_0104	COG:J	Translation, ribosomal structure and biogenesis	COG
+gene_0105	GO:0006412	translation	GO
+gene_0105	COG:K	Transcription	COG
+gene_0106	GO:0006810	transport	GO
+gene_0106	COG:G	Carbohydrate transport and metabolism	COG
+gene_0107	GO:0006810	transport	GO
+gene_0107	REG:StressR	StressR predicted regulon	Regulon
+gene_0108	GO:0006810	transport	GO
+gene_0108	REG:MetR	MetR predicted regulon	Regulon
+gene_0109	GO:0008152	metabolic process	GO
+gene_0109	GO:0006810	transport	GO
+gene_0110	GO:0006355	regulation of transcription	GO
+gene_0110	GO:0006810	transport	GO
+gene_0111	GO:0006412	translation	GO
+gene_0111	GO:0006810	transport	GO
+gene_0112	GO:0006810	transport	GO
+gene_0113	GO:0005975	carbohydrate metabolic process	GO
+gene_0114	GO:0005975	carbohydrate metabolic process	GO
+gene_0114	KEGG:ribosome	Ribosome	KEGG
+gene_0115	GO:0005975	carbohydrate metabolic process	GO
+gene_0115	KEGG:oxidative_phosphorylation	Oxidative phosphorylation	KEGG
+gene_0116	GO:0005975	carbohydrate metabolic process	GO
+gene_0116	COG:J	Translation, ribosomal structure and biogenesis	COG
+gene_0117	GO:0005975	carbohydrate metabolic process	GO
+gene_0117	COG:K	Transcription	COG
+gene_0118	GO:0005975	carbohydrate metabolic process	GO
+gene_0118	COG:G	Carbohydrate transport and metabolism	COG
+gene_0119	GO:0005975	carbohydrate metabolic process	GO
+gene_0119	REG:StressR	StressR predicted regulon	Regulon
+gene_0120	KEGG:ribosome	Ribosome	KEGG
+gene_0120	REG:MetR	MetR predicted regulon	Regulon
+gene_0121	GO:0008152	metabolic process	GO
+gene_0121	KEGG:ribosome	Ribosome	KEGG
+gene_0122	GO:0006355	regulation of transcription	GO
+gene_0122	KEGG:ribosome	Ribosome	KEGG
+gene_0123	GO:0006412	translation	GO
+gene_0123	KEGG:ribosome	Ribosome	KEGG
+gene_0124	GO:0006810	transport	GO
+gene_0124	KEGG:ribosome	Ribosome	KEGG
+gene_0125	GO:0005975	carbohydrate metabolic process	GO
+gene_0125	KEGG:ribosome	Ribosome	KEGG
+gene_0126	KEGG:ribosome	Ribosome	KEGG
+gene_0127	KEGG:oxidative_phosphorylation	Oxidative phosphorylation	KEGG
+gene_0128	KEGG:oxidative_phosphorylation	Oxidative phosphorylation	KEGG
+gene_0128	COG:J	Translation, ribosomal structure and biogenesis	COG
+gene_0129	KEGG:oxidative_phosphorylation	Oxidative phosphorylation	KEGG
+gene_0129	COG:K	Transcription	COG
+gene_0130	KEGG:oxidative_phosphorylation	Oxidative phosphorylation	KEGG
+gene_0130	COG:G	Carbohydrate transport and metabolism	COG
+gene_0131	KEGG:oxidative_phosphorylation	Oxidative phosphorylation	KEGG
+gene_0131	REG:StressR	StressR predicted regulon	Regulon
+gene_0132	KEGG:oxidative_phosphorylation	Oxidative phosphorylation	KEGG
+gene_0132	REG:MetR	MetR predicted regulon	Regulon
+gene_0133	GO:0008152	metabolic process	GO
+gene_0133	KEGG:oxidative_phosphorylation	Oxidative phosphorylation	KEGG
+gene_0134	GO:0006355	regulation of transcription	GO
+gene_0134	COG:J	Translation, ribosomal structure and biogenesis	COG
+gene_0135	GO:0006412	translation	GO
+gene_0135	COG:J	Translation, ribosomal structure and biogenesis	COG
+gene_0136	GO:0006810	transport	GO
+gene_0136	COG:J	Translation, ribosomal structure and biogenesis	COG
+gene_0137	GO:0005975	carbohydrate metabolic process	GO
+gene_0137	COG:J	Translation, ribosomal structure and biogenesis	COG
+gene_0138	KEGG:ribosome	Ribosome	KEGG
+gene_0138	COG:J	Translation, ribosomal structure and biogenesis	COG
+gene_0139	KEGG:oxidative_phosphorylation	Oxidative phosphorylation	KEGG
+gene_0139	COG:J	Translation, ribosomal structure and biogenesis	COG
+gene_0140	COG:J	Translation, ribosomal structure and biogenesis	COG
+gene_0141	COG:K	Transcription	COG
+gene_0142	COG:K	Transcription	COG
+gene_0142	COG:G	Carbohydrate transport and metabolism	COG
+gene_0143	COG:K	Transcription	COG
+gene_0143	REG:StressR	StressR predicted regulon	Regulon
+gene_0144	COG:K	Transcription	COG
+gene_0144	REG:MetR	MetR predicted regulon	Regulon
+gene_0145	GO:0008152	metabolic process	GO
+gene_0145	COG:K	Transcription	COG
+gene_0146	GO:0006355	regulation of transcription	GO
+gene_0146	COG:K	Transcription	COG
+gene_0147	GO:0006412	translation	GO
+gene_0147	COG:K	Transcription	COG
+gene_0148	GO:0006810	transport	GO
+gene_0148	COG:G	Carbohydrate transport and metabolism	COG
+gene_0149	GO:0005975	carbohydrate metabolic process	GO
+gene_0149	COG:G	Carbohydrate transport and metabolism	COG
+gene_0150	KEGG:ribosome	Ribosome	KEGG
+gene_0150	COG:G	Carbohydrate transport and metabolism	COG
+gene_0151	KEGG:oxidative_phosphorylation	Oxidative phosphorylation	KEGG
+gene_0151	COG:G	Carbohydrate transport and metabolism	COG
+gene_0152	COG:J	Translation, ribosomal structure and biogenesis	COG
+gene_0152	COG:G	Carbohydrate transport and metabolism	COG
+gene_0153	COG:K	Transcription	COG
+gene_0153	COG:G	Carbohydrate transport and metabolism	COG
+gene_0154	COG:G	Carbohydrate transport and metabolism	COG
+gene_0155	REG:StressR	StressR predicted regulon	Regulon
+gene_0156	REG:StressR	StressR predicted regulon	Regulon
+gene_0156	REG:MetR	MetR predicted regulon	Regulon
+gene_0157	GO:0008152	metabolic process	GO
+gene_0157	REG:StressR	StressR predicted regulon	Regulon
+gene_0158	GO:0006355	regulation of transcription	GO
+gene_0158	REG:StressR	StressR predicted regulon	Regulon
+gene_0159	GO:0006412	translation	GO
+gene_0159	REG:StressR	StressR predicted regulon	Regulon
+gene_0160	GO:0006810	transport	GO
+gene_0160	REG:StressR	StressR predicted regulon	Regulon
+gene_0161	GO:0005975	carbohydrate metabolic process	GO
+gene_0161	REG:StressR	StressR predicted regulon	Regulon
+gene_0162	KEGG:ribosome	Ribosome	KEGG
+gene_0162	REG:MetR	MetR predicted regulon	Regulon
+gene_0163	KEGG:oxidative_phosphorylation	Oxidative phosphorylation	KEGG
+gene_0163	REG:MetR	MetR predicted regulon	Regulon
+gene_0164	COG:J	Translation, ribosomal structure and biogenesis	COG
+gene_0164	REG:MetR	MetR predicted regulon	Regulon
+gene_0165	COG:K	Transcription	COG
+gene_0165	REG:MetR	MetR predicted regulon	Regulon
+gene_0166	COG:G	Carbohydrate transport and metabolism	COG
+gene_0166	REG:MetR	MetR predicted regulon	Regulon
+gene_0167	REG:StressR	StressR predicted regulon	Regulon
+gene_0167	REG:MetR	MetR predicted regulon	Regulon
+gene_0168	REG:MetR	MetR predicted regulon	Regulon
+gene_0169	GO:0008152	metabolic process	GO
+gene_0170	GO:0008152	metabolic process	GO
+gene_0170	GO:0006355	regulation of transcription	GO
+gene_0171	GO:0008152	metabolic process	GO
+gene_0171	GO:0006412	translation	GO
+gene_0172	GO:0008152	metabolic process	GO
+gene_0172	GO:0006810	transport	GO
+gene_0173	GO:0008152	metabolic process	GO
+gene_0173	GO:0005975	carbohydrate metabolic process	GO
+gene_0174	GO:0008152	metabolic process	GO
+gene_0174	KEGG:ribosome	Ribosome	KEGG
+gene_0175	GO:0008152	metabolic process	GO
+gene_0175	KEGG:oxidative_phosphorylation	Oxidative phosphorylation	KEGG
+gene_0176	GO:0006355	regulation of transcription	GO
+gene_0176	COG:J	Translation, ribosomal structure and biogenesis	COG
+gene_0177	GO:0006355	regulation of transcription	GO
+gene_0177	COG:K	Transcription	COG
+gene_0178	GO:0006355	regulation of transcription	GO
+gene_0178	COG:G	Carbohydrate transport and metabolism	COG
+gene_0179	GO:0006355	regulation of transcription	GO
+gene_0179	REG:StressR	StressR predicted regulon	Regulon
+gene_0180	GO:0006355	regulation of transcription	GO
+gene_0180	REG:MetR	MetR predicted regulon	Regulon
+gene_0181	GO:0008152	metabolic process	GO
+gene_0181	GO:0006355	regulation of transcription	GO
+gene_0182	GO:0006355	regulation of transcription	GO
+gene_0183	GO:0006412	translation	GO
+gene_0184	GO:0006412	translation	GO
+gene_0184	GO:0006810	transport	GO
+gene_0185	GO:0006412	translation	GO
+gene_0185	GO:0005975	carbohydrate metabolic process	GO
+gene_0186	GO:0006412	translation	GO
+gene_0186	KEGG:ribosome	Ribosome	KEGG
+gene_0187	GO:0006412	translation	GO
+gene_0187	KEGG:oxidative_phosphorylation	Oxidative phosphorylation	KEGG
+gene_0188	GO:0006412	translation	GO
+gene_0188	COG:J	Translation, ribosomal structure and biogenesis	COG
+gene_0189	GO:0006412	translation	GO
+gene_0189	COG:K	Transcription	COG
+gene_0190	GO:0006810	transport	GO
+gene_0190	COG:G	Carbohydrate transport and metabolism	COG
+gene_0191	GO:0006810	transport	GO
+gene_0191	REG:StressR	StressR predicted regulon	Regulon
+gene_0192	GO:0006810	transport	GO
+gene_0192	REG:MetR	MetR predicted regulon	Regulon
+gene_0193	GO:0008152	metabolic process	GO
+gene_0193	GO:0006810	transport	GO
+gene_0194	GO:0006355	regulation of transcription	GO
+gene_0194	GO:0006810	transport	GO
+gene_0195	GO:0006412	translation	GO
+gene_0195	GO:0006810	transport	GO
+gene_0196	GO:0006810	transport	GO
+gene_0197	GO:0005975	carbohydrate metabolic process	GO
+gene_0198	GO:0005975	carbohydrate metabolic process	GO
+gene_0198	KEGG:ribosome	Ribosome	KEGG
+gene_0199	GO:0005975	carbohydrate metabolic process	GO
+gene_0199	KEGG:oxidative_phosphorylation	Oxidative phosphorylation	KEGG
+gene_0200	GO:0005975	carbohydrate metabolic process	GO
+gene_0200	COG:J	Translation, ribosomal structure and biogenesis	COG
+gene_0201	GO:0005975	carbohydrate metabolic process	GO
+gene_0201	COG:K	Transcription	COG
+gene_0202	GO:0005975	carbohydrate metabolic process	GO
+gene_0202	COG:G	Carbohydrate transport and metabolism	COG
+gene_0203	GO:0005975	carbohydrate metabolic process	GO
+gene_0203	REG:StressR	StressR predicted regulon	Regulon
+gene_0204	KEGG:ribosome	Ribosome	KEGG
+gene_0204	REG:MetR	MetR predicted regulon	Regulon
+gene_0205	GO:0008152	metabolic process	GO
+gene_0205	KEGG:ribosome	Ribosome	KEGG
+gene_0206	GO:0006355	regulation of transcription	GO
+gene_0206	KEGG:ribosome	Ribosome	KEGG
+gene_0207	GO:0006412	translation	GO
+gene_0207	KEGG:ribosome	Ribosome	KEGG
+gene_0208	GO:0006810	transport	GO
+gene_0208	KEGG:ribosome	Ribosome	KEGG
+gene_0209	GO:0005975	carbohydrate metabolic process	GO
+gene_0209	KEGG:ribosome	Ribosome	KEGG
+gene_0210	KEGG:ribosome	Ribosome	KEGG
+gene_0211	KEGG:oxidative_phosphorylation	Oxidative phosphorylation	KEGG
+gene_0212	KEGG:oxidative_phosphorylation	Oxidative phosphorylation	KEGG
+gene_0212	COG:J	Translation, ribosomal structure and biogenesis	COG
+gene_0213	KEGG:oxidative_phosphorylation	Oxidative phosphorylation	KEGG
+gene_0213	COG:K	Transcription	COG
+gene_0214	KEGG:oxidative_phosphorylation	Oxidative phosphorylation	KEGG
+gene_0214	COG:G	Carbohydrate transport and metabolism	COG
+gene_0215	KEGG:oxidative_phosphorylation	Oxidative phosphorylation	KEGG
+gene_0215	REG:StressR	StressR predicted regulon	Regulon
+gene_0216	KEGG:oxidative_phosphorylation	Oxidative phosphorylation	KEGG
+gene_0216	REG:MetR	MetR predicted regulon	Regulon
+gene_0217	GO:0008152	metabolic process	GO
+gene_0217	KEGG:oxidative_phosphorylation	Oxidative phosphorylation	KEGG
+gene_0218	GO:0006355	regulation of transcription	GO
+gene_0218	COG:J	Translation, ribosomal structure and biogenesis	COG
+gene_0219	GO:0006412	translation	GO
+gene_0219	COG:J	Translation, ribosomal structure and biogenesis	COG
+gene_0220	GO:0006810	transport	GO
+gene_0220	COG:J	Translation, ribosomal structure and biogenesis	COG
+gene_0221	GO:0005975	carbohydrate metabolic process	GO
+gene_0221	COG:J	Translation, ribosomal structure and biogenesis	COG
+gene_0222	KEGG:ribosome	Ribosome	KEGG
+gene_0222	COG:J	Translation, ribosomal structure and biogenesis	COG
+gene_0223	KEGG:oxidative_phosphorylation	Oxidative phosphorylation	KEGG
+gene_0223	COG:J	Translation, ribosomal structure and biogenesis	COG
+gene_0224	COG:J	Translation, ribosomal structure and biogenesis	COG
+gene_0225	COG:K	Transcription	COG
+gene_0226	COG:K	Transcription	COG
+gene_0226	COG:G	Carbohydrate transport and metabolism	COG
+gene_0227	COG:K	Transcription	COG
+gene_0227	REG:StressR	StressR predicted regulon	Regulon
+gene_0228	COG:K	Transcription	COG
+gene_0228	REG:MetR	MetR predicted regulon	Regulon
+gene_0229	GO:0008152	metabolic process	GO
+gene_0229	COG:K	Transcription	COG
+gene_0230	GO:0006355	regulation of transcription	GO
+gene_0230	COG:K	Transcription	COG
+gene_0231	GO:0006412	translation	GO
+gene_0231	COG:K	Transcription	COG
+gene_0232	GO:0006810	transport	GO
+gene_0232	COG:G	Carbohydrate transport and metabolism	COG
+gene_0233	GO:0005975	carbohydrate metabolic process	GO
+gene_0233	COG:G	Carbohydrate transport and metabolism	COG
+gene_0234	KEGG:ribosome	Ribosome	KEGG
+gene_0234	COG:G	Carbohydrate transport and metabolism	COG
+gene_0235	KEGG:oxidative_phosphorylation	Oxidative phosphorylation	KEGG
+gene_0235	COG:G	Carbohydrate transport and metabolism	COG
+gene_0236	COG:J	Translation, ribosomal structure and biogenesis	COG
+gene_0236	COG:G	Carbohydrate transport and metabolism	COG
+gene_0237	COG:K	Transcription	COG
+gene_0237	COG:G	Carbohydrate transport and metabolism	COG
+gene_0238	COG:G	Carbohydrate transport and metabolism	COG
+gene_0239	REG:StressR	StressR predicted regulon	Regulon
+gene_0240	REG:StressR	StressR predicted regulon	Regulon
+gene_0240	REG:MetR	MetR predicted regulon	Regulon

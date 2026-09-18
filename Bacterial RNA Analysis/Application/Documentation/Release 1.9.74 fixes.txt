@@ -1,0 +1,14 @@
+Bacterial RNA Analysis 1.9.74
+
+1. The Operon method overview now presents rSeqTU, OpDetect, and TU Architecture as three complete method cards. TU Architecture remains an evidence-integration/manual-curation workflow and does not replace either prediction engine.
+2. Pathway Database Analysis, STRING Protein Associations, Transcript Discovery, and TU Architecture now provide Scan folder for automatic input assignment. Each scan searches recursively, reports every assignment and omission, preserves manual Browse fallbacks, and creates a module-specific default result folder.
+3. Functional Enrichment section 4 is now Co-expression preprocessing only. The redundant automatic-module and network-method controls are removed; the guided combined workflow uses CEMiTool automatic modules internally.
+4. The unified interactive report uses one Specialized analysis dropdown instead of a multi-plot checkbox list. All functional-enrichment and co-expression views remain in the same plotting region and linked spreadsheet workspace.
+5. Specialized Appearance includes Show biological data labels. It hides/restores plot text, categorical term ticks, pie text, and plot annotations while preserving axes and hover detail.
+6. GO annotation landscape now keeps its Gene length (bp) axis title visible. RichFactor, enrichment bar, and enrichment dot plots reserve space for their X-axis titles.
+7. GO semantic similarity is limited to a readable strongest-term matrix, retains complete wrapped GO names without ellipses, and removes the redundant Same GO terms in the same cluster order axis title.
+8. Enrichment Circos uses fewer full labels, three staggered label lanes, and leader lines that begin outside the circular tracks. Its −log10 adjusted p title is vertical beside the gradient.
+9. RichFactor and enrichment dot color-bar titles are vertical and remain at the right edge. The module-expression heatmap gradient is moved outside the heatmap/functional-label panels.
+10. Co-expression and regulatory-network nodes use categorical color traces with an explicit Node color legend, so every yellow, purple, and other node group is identified.
+11. OpDetect recovery now retries terminate/shutdown, wakes WSL, and—when elevated—resets WslService or LxssManager before suggesting a Windows restart. The GUI reports Recovery needed and directs the user to the non-destructive Install or repair action.
+12. The parameter guide, module instructions, output guide, and user guide describe the new autoscan, preprocessing-only section 4, dropdown workspace, label visibility, and single combined run.

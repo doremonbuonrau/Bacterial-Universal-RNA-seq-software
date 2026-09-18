@@ -1,0 +1,23 @@
+name: opdetect-pipeline
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - python=3.10
+  - fastp=0.23.4
+  - hisat2=2.2.1
+  - samtools=1.17
+  - bedtools=2.30.0
+  - pip
+  - pip:
+      - numpy==1.26.4
+      - pandas==2.1.0
+      - matplotlib==3.10.3
+      - pillow==10.0.0
+      - scipy==1.11.2
+      - tensorflow==2.19.0
+      - keras==3.9.0
+      - scikit-learn==1.4.2
+      - packaging==24.2
+      - python-docx==1.1.2

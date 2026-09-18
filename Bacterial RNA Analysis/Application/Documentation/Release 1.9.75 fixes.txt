@@ -1,0 +1,10 @@
+Bacterial RNA Analysis 1.9.75
+
+1. RichFactor, enrichment bar, and enrichment dot plots now fit the actual embedded plotting viewport. Their X axes and X-axis titles remain visible instead of being clipped below the interactive panel.
+2. The GO semantic-similarity matrix uses at most ten strongest terms, numbered X-axis columns, complete wrapped row labels, full hover text, and no cell or cluster-boundary gridlines. The complete matrix and cluster table remain exported.
+3. The bacterial Cellular Component map uses exterior callout lanes. Cytoplasm, nucleoid, cytosol, ribosome, membrane, wall, periplasm, pilus, and flagellum leaders no longer cross the cell interior, while Extracellular region and Other cellular component occupy separate unconnected bottom lanes.
+4. Enrichment Circos is limited to eight readable perimeter labels, alternates two outer label radii, places text outward from its anchor, and starts every leader outside the circular tracks.
+5. Term-overlap, gene–term, co-expression, and regulatory-network connections are thicker, fully opaque, and darker. Directed arrows use the same improved visibility.
+6. Specialized network Appearance now provides a color picker for every node legend group plus a separate Connection lines color picker. Changes apply immediately and are retained by plot export.
+7. Module-expression heatmap, module-expression trends, and module–trait panels no longer draw background gridlines. The heatmap keeps only meaningful module separators, and the trend panels retain only the biological zero reference.
+8. The generated report and package identify this revision as version 1.9.75.

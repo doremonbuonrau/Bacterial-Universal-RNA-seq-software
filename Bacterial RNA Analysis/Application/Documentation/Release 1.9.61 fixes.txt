@@ -1,0 +1,26 @@
+Bacterial RNA Analysis 1.9.61
+=============================
+
+This maintenance build addresses four failures reported from the scientific downstream modules.
+
+1. Co-expression / GENIE3
+- Adds the missing R package doRNG to the downstream environment.
+- Existing environments self-repair doRNG once before the next Network run.
+
+2. STRING PPI and Pathway Database Analysis
+- Fixes WinForms GetNewClosure event handlers losing Invoke-ScienceBackend.
+- Captures backend, message, run-log and suite-root state explicitly.
+
+3. Transcript Discovery and TU Architecture
+- Shared WSL discovery no longer treats harmless WSL stderr proxy warnings as a failed distro.
+- Stale saved distro selections are revalidated and refreshed automatically.
+- Scientific backend execution judges WSL success from the process exit code.
+- Browse handlers are closure-safe across all Scientific Expansion pages.
+
+4. Functional annotation coverage
+- Retained GFF/GTF/gene metadata is searched first for exact identifiers, product/function text and explicit GO IDs.
+- Exact-organism UniProtKB reviewed + TrEMBL remains preferred.
+- If a recently deposited strain has no exact UniProt proteome, sequence rescue can broaden conservatively to a bounded genus-lineage UniProtKB reviewed + TrEMBL library.
+- Global reviewed Swiss-Prot remains the final high-confidence fallback.
+- Genes without defensible GO evidence remain explicitly unmatched and are reported in genes_without_go.tsv rather than receiving a forced annotation.
+- Reusable sequence databases remain in /root/.local/share/prok-rnaseq/Database Library.

@@ -1,0 +1,13 @@
+v30 KEGG pathway expression maps
+14 September 2026
+
+These screenshots come from the actual HTML renderer using synthetic test
+diagrams and genes. They do not represent a biological pathway or experiment.
+
+Passed: 8 Python mapping/integration tests, 24 PowerShell layout combinations,
+DE and Functional/GO StrictMode startup callbacks, and Chromium interaction
+checks for both the native map and existing DE/GO views. Image and standalone
+HTML exports were reopened and inspected. Reports made no network requests.
+
+Live KEGG retrieval timed out in this workspace. Native Windows GUI execution
+and high-DPI appearance were not tested on this Linux machine.

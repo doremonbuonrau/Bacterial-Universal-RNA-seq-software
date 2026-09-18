@@ -1,0 +1,95 @@
+Bacterial RNA Analysis 1.9.77 — Embedded workbook and STRING mapping update
+
+Manual input
+Click Manual Excel input to open a spreadsheet inside the application. No Excel file is
+created beforehand. Column headers show the real field/sample names, not A/B/C. Double-click
+a header to rename it. Ctrl+V pastes data and recognises ordinary headers at the top left;
+Ctrl+Shift+V explicitly pastes with column names. Required sheets are marked *.
+Use Add column for extra sample columns. The first editable row is always a data row.
+
+Empty cells show their corresponding examples immediately as pale italic placeholders. These
+visual hints are not cell values and are never submitted; typing or pasting replaces them.
+Synthetic examples demonstrate format and are not experimental results. There is no separate
+Examples tab or example button because the references are already visible in the editable grid.
+
+Use data validates the input and assigns a fresh set of TSV input tables to the analysis.
+Files are stored in LocalAppData/BacterialRNAAnalysis/Manual inputs so they remain available
+for the run. Export workbook optionally writes only the editable input sheets as an XLSX file;
+it does not add separate example sheets. Import workbook loads a saved XLSX/XLSM into the editor. Formula
+cells are imported as their last saved values. The editor does not calculate formulas.
+Drafts are retained while the application stays open; export a workbook to keep a draft
+across application restarts. Closing the editor does not submit its data.
+
+All seven input profiles support this workflow: DE, combined GO/co-expression, network,
+STRING PPI, pathway database analysis, transcript discovery, and TU architecture.
+Blank optional sheets clear previous assignments. Count/expression sample names must match
+Sample metadata exactly; raw counts must be non-negative integers. Gene identifiers remain
+text, including leading zeros. Inputs are written only after complete validation.
+
+STRING PPI
+Use latest results loads the last completed DE significant-gene list. Expression edges are
+paired automatically only if the latest network output has the same project parent folder.
+Otherwise use Scan DE / functional results folder or select the edge table explicitly.
+Confirm that the selected organism matches the reference strain/assembly.
+
+The organism catalog and identifier mapping are separate checks. A supported taxonomy ID
+can still have no matches for your locus tags. STRING's get_string_ids returns HTTP 404
+when no identifiers resolve. The application now records that as an identifier mismatch,
+with the complete unmatched list under Intermediate files, instead of a generic backend
+failure. The confidence score does not affect identifier matching.
+
+Identifier aliases (optional) accepts a matching GFF/GFF3/GTF or a table with gene_id and
+protein_id/UniProt identifiers. The manual PPI editor includes an alias sheet. Before failing
+on locus tags such as CVV72_RS*, the program automatically searches the nearby DE project and
+RNA Processing tree for matching GFF or gene-to-protein/UniProt files. Only explicit same-row
+annotation relationships are tried; conflicting aliases are reported as ambiguous. Searches
+are bounded to project folders and never traverse a whole mounted drive. Species are never
+substituted. Resolved STRING IDs are used for network retrieval and expression-edge joins,
+while original input IDs are preserved in the mapping audit.
+
+The score help circle shows its full explanation on hover. STRING scores range from 0 to
+1000: higher values retain fewer, better-supported associations. The PPI header actions
+align to the right. PPI, pathway, transcript and TU consoles share compact status controls,
+two activity indicators, side-by-side environment actions, Stop current job, and library,
+log and results buttons. Stop targets only this job and its child processes. The installer
+continues to open its own console for elevation and interactive prompts.
+
+Successful STRING runs now create STRING PPI interactive.html as well as the Excel workbook
+and GraphML. Open interactive report launches a self-contained network view with the linked
+spreadsheet and the same appearance/export controls used by co-expression analysis. GraphML
+is retained for specialist desktop network applications but is no longer required for routine
+inspection. The network is the default view when the report opens; selecting a protein node
+shows its submitted gene/protein identifier in the linked spreadsheet.
+
+Online KEGG pathway analysis
+The organism field is a searchable dropdown with an explicit Validate / resolve action.
+Amycolatopsis orientalis resolves to aori. KEGG BRITE/table identifiers such as br08606 and
+br08610 are references, not organism codes, and are rejected with a specific explanation.
+The catalog loader uses the documented list/genome route and falls back to list/organism.
+The duplicate header Database Library button is removed because the same action is already in
+the live-console panel.
+
+Layouts and plots
+Enrichment/co-expression mapping choices are associated with section 2. Functional enrichment
+and co-expression method panels remain visible. Only the detailed gene-selection/gene-set
+controls and module/edge/regulatory controls expand when their checkboxes are selected inside
+sections 3 and 4 respectively. The former section 5 is removed, and its run/report controls
+use one compact unnumbered action row. The input page therefore preserves direct method choice
+while saving vertical space. Separate
+example buttons are removed. In DE, Use latest RNA-seq result occupies that action row, and
+the raw-count file row has the same layout as the other file inputs.
+
+Guided package options wrap function names and descriptive cells. All plots have a blank white
+background by default and a selectable background color. Gridlines are off by default, and
+Volcano gene labels are borderless. All four plot margins have sliders and numeric pixel fields;
+0 means automatic spacing. Cellular-map component labels remain draggable, but the misleading
+effect/count circles and legend are removed. Parenthetical text states the mapped-gene count.
+Clicking supported GO/enrichment marks opens member genes or proteins in the linked spreadsheet.
+
+Validation
+Input/export/mapping behavior is checked offline with simulated data and mocked STRING
+responses; live availability of any particular organism/identifier set cannot be guaranteed.
+Windows WinForms and WSL execution require final verification on Windows.
+
+Official STRING API reference
+https://string-db.org/help/api/

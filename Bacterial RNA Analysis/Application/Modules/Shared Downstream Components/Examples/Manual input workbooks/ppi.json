@@ -1,0 +1,76 @@
+{
+  "profile": "ppi",
+  "title": "STRING PPI manual input",
+  "sheets": [
+    {
+      "name": "Gene list",
+      "required": true,
+      "description": "Paste one STRING-recognizable gene, protein, or locus identifier per row.",
+      "headers": [
+        "gene_id"
+      ],
+      "rows": [],
+      "example_headers": [
+        "gene_id"
+      ],
+      "example_rows": [
+        [
+          "b0001"
+        ],
+        [
+          "b0002"
+        ],
+        [
+          "b0003"
+        ]
+      ]
+    },
+    {
+      "name": "Identifier aliases optional",
+      "required": false,
+      "description": "Optional verified gene/locus-to-protein or UniProt identifiers from the same organism annotation.",
+      "headers": [
+        "gene_id",
+        "protein_id"
+      ],
+      "rows": [],
+      "example_headers": [
+        "gene_id",
+        "protein_id"
+      ],
+      "example_rows": [
+        [
+          "b0001",
+          "P0AD86"
+        ],
+        [
+          "b0002",
+          "P00561"
+        ]
+      ]
+    },
+    {
+      "name": "Expression edges optional",
+      "required": false,
+      "description": "Optional existing co-expression or regulatory edges.",
+      "headers": [
+        "source",
+        "target",
+        "weight"
+      ],
+      "rows": [],
+      "example_headers": [
+        "source",
+        "target",
+        "weight"
+      ],
+      "example_rows": [
+        [
+          "b0001",
+          "b0002",
+          "0.85"
+        ]
+      ]
+    }
+  ]
+}

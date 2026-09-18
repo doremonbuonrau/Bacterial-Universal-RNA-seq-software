@@ -1,0 +1,117 @@
+{
+  "profile": "tu",
+  "title": "TU Architecture manual input",
+  "sheets": [
+    {
+      "name": "Input paths",
+      "required": false,
+      "description": "Enter Windows file or folder paths in the file_or_folder_path column.",
+      "headers": [
+        "input_name",
+        "file_or_folder_path",
+        "notes"
+      ],
+      "rows": [
+        [
+          "RNA Processing result folder",
+          "",
+          "Used to locate matching reference and annotation"
+        ],
+        [
+          "Reference FASTA override",
+          "",
+          "Optional"
+        ],
+        [
+          "Annotation override",
+          "",
+          "Optional GFF3/GFF/GTF"
+        ],
+        [
+          "Predicted transcripts file",
+          "",
+          "Optional alternative to pasting the worksheet below"
+        ]
+      ],
+      "example_headers": [
+        "input_name",
+        "file_or_folder_path",
+        "notes"
+      ],
+      "example_rows": [
+        [
+          "RNA Processing result folder",
+          "C:\\\\experiment\\\\RNA Processing Results",
+          "Replace this example path"
+        ]
+      ]
+    },
+    {
+      "name": "Predicted transcripts",
+      "required": false,
+      "description": "Paste Transcript Discovery output when not supplying a file path.",
+      "headers": [
+        "transcript_id",
+        "seqid",
+        "start",
+        "end",
+        "strand",
+        "class",
+        "mean_depth"
+      ],
+      "rows": [],
+      "example_headers": [
+        "transcript_id",
+        "seqid",
+        "start",
+        "end",
+        "strand",
+        "class",
+        "mean_depth"
+      ],
+      "example_rows": [
+        [
+          "tx_001",
+          "contig_1",
+          "101",
+          "900",
+          "+",
+          "candidate_TU",
+          "25.0"
+        ]
+      ]
+    },
+    {
+      "name": "Terminator evidence optional",
+      "required": false,
+      "description": "Optional verified terminator calls.",
+      "headers": [
+        "seqid",
+        "start",
+        "end",
+        "strand",
+        "score",
+        "source"
+      ],
+      "rows": [],
+      "example_headers": [
+        "seqid",
+        "start",
+        "end",
+        "strand",
+        "score",
+        "source"
+      ],
+      "example_rows": [
+        [
+          "contig_1",
+          "890",
+          "915",
+          "+",
+          "0.9",
+          "Format example only"
+        ]
+      ]
+    }
+  ]
+}

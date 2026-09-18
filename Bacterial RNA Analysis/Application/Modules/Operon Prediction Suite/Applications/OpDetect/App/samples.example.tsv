@@ -1,0 +1,4 @@
+replicate	r1	r2
+replicate_1	/path/to/condition_rep1_R1.fastq.gz	/path/to/condition_rep1_R2.fastq.gz
+replicate_2	/path/to/condition_rep2_R1.fastq.gz	/path/to/condition_rep2_R2.fastq.gz
+replicate_3	/path/to/condition_rep3_R1.fastq.gz	/path/to/condition_rep3_R2.fastq.gz

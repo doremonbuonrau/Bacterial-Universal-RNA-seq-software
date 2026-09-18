@@ -1,0 +1,7 @@
+Bacterial RNA Analysis 1.9.68
+
+GO / Enrichment layout refinement
+
+- In section 2, moved "Update shared UniProt library copy" and "Test database connection" onto the same row as "Organism name or taxonomy ID".
+- Added responsive sizing so the organism/taxonomy field expands into available space while the two database controls remain visible on the same line.
+- Reduced the online mapping-details panel height after removing the separate database-action row, saving vertical space without changing GO analysis logic.

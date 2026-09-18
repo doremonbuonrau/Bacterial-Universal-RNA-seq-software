@@ -1,0 +1,9 @@
+Bacterial RNA Analysis 1.9.66
+
+Downstream installer and network action-row fixes
+
+1. GO/Enrichment and Co-expression/Networks Install or update no longer pass an already quoted command through nested bash -lc layers. The Windows launcher transports the exact command as UTF-8 base64, the Linux supervisor decodes it, and exactly one bash -lc executes it. This fixes setup_downstream.sh failures such as: unexpected EOF while looking for matching quote, especially when the suite path contains spaces.
+
+2. Managed process-group supervision and safe-stop behavior are preserved.
+
+3. Co-expression/Networks now has one authoritative action-row resize handler. Parameter guide, Open interactive report, Guided package options, and Run network analysis have explicit spacing and high-DPI-safe widths, preventing Parameter guide from overlapping the interactive-report button.

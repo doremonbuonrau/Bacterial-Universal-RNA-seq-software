@@ -1,0 +1,10 @@
+Bacterial RNA Analysis 1.9.63
+
+UI layout refinements
+- GO: Open example workbook now sits directly beside Scan result folder, both directly beneath Use latest DE result.
+- GO: the example-workbook button was removed from Background universe and results to save vertical space.
+- GO/Network: compacted the shared live-console footer and retained automatic scrolling only as a DPI/small-window fallback, preventing the footer from clipping the Run analysis action row.
+- GO/Network: widened the left status panel and Open result folder button so the full label remains visible.
+- Network: Open interactive report is now grouped directly beside Parameter guide, followed by Guided package options and Run network analysis.
+
+No analysis algorithms or statistical defaults were changed in this release.

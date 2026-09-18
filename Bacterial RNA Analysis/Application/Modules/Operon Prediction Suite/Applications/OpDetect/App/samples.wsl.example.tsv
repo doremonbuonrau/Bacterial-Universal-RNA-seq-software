@@ -1,0 +1,4 @@
+sample	r1	r2
+sample_1	/root/opdetect_input/sample_1_R1.fastq.gz	/root/opdetect_input/sample_1_R2.fastq.gz
+sample_2	/root/opdetect_input/sample_2_R1.fastq.gz	/root/opdetect_input/sample_2_R2.fastq.gz
+sample_3	/root/opdetect_input/sample_3_R1.fastq.gz	/root/opdetect_input/sample_3_R2.fastq.gz

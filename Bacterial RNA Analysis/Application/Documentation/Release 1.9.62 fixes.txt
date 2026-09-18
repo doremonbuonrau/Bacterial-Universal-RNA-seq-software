@@ -1,0 +1,11 @@
+Bacterial RNA Analysis 1.9.62
+
+Environment, scientific-module runner and downstream UI reliability fixes
+
+1. GO environment checks no longer fail because doRNG is absent. doRNG is a GENIE3 parallel helper, not a GO requirement. The checker now treats it as optional and Network performs a targeted repair when needed.
+2. GENIE3 now has a safe one-core fallback if doRNG cannot be installed, so an offline/temporary package-channel failure does not discard the network run.
+3. STRING PPI, Pathway Database Analysis, Transcript Discovery and TU Architecture no longer build a quoted bash command in scientific_expansion_runner.ps1. WSL receives a direct argument array, fixing the Windows PowerShell parser failure previously reported at scientific_expansion_runner.ps1:36.
+4. GO and Co-expression/Networks now expose Database library, Open log file and Open result folder together in the live-console status panel.
+5. GO Scan result folder is positioned directly below Use latest DE result, as requested.
+6. Database Library buttons now create the Linux folder directly and open the WSL UNC location with a quoted Explorer process argument; no wslpath/PowerShell quoting is required.
+7. Shared Database Library behavior and persistent UniProt caching remain unchanged.

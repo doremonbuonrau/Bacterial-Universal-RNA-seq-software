@@ -1,0 +1,130 @@
+{
+  "schema_version": 2,
+  "project": {
+    "name": "bacterial_rnaseq_project",
+    "analysis_type": "short",
+    "output_dir": "C:\\RNAseq\\bacterial_rnaseq_project",
+    "threads": 16,
+    "min_mapq": 10,
+    "resume": true,
+    "strict_strand_audit": true
+  },
+  "reference": {
+    "fasta": "C:\\RNAseq\\reference\\genome.fna",
+    "annotation": "C:\\RNAseq\\reference\\annotation.gff3",
+    "feature_type": "auto",
+    "id_attribute": "auto"
+  },
+  "library": {
+    "strand": "reverse",
+    "short_strand": "reverse",
+    "long_strand": "auto",
+    "protocol": "dUTP"
+  },
+  "methods": {
+    "short_qc": "fastqc_fastp_multiqc",
+    "short_alignment": "dual_bowtie2_bwa",
+    "long_basecalling": "already_basecalled",
+    "long_qc": "nanoplot_longqc",
+    "long_alignment": "dual_minimap2_winnowmap",
+    "quantification": "featurecounts_fadu_audit",
+    "coverage": "raw_and_cpm_stranded",
+    "adapter_r1": "",
+    "adapter_r2": ""
+  },
+  "options": {
+    "short_quality": 20,
+    "short_unqualified_percent": 40,
+    "short_min_length": 30,
+    "filter_long_reads": false,
+    "long_min_quality": 10,
+    "long_min_length": 200,
+    "strand_audit_min_assigned": 1000,
+    "strand_audit_dominance": 0.8,
+    "dorado_model": "sup",
+    "dorado_path": "dorado",
+    "bowtie2_preset": "sensitive",
+    "bowtie2_mode": "end-to-end",
+    "tool_arguments": {
+      "bowtie2": "",
+      "fastp": "",
+      "samtools_sort": "",
+      "featurecounts": "",
+      "bamcoverage": ""
+    }
+  },
+  "samples": [
+    {
+      "include": true,
+      "sample_id": "control_1",
+      "condition": "Control",
+      "replicate": "1",
+      "batch": "batch_A",
+      "short_r1": "C:\\RNAseq\\reads\\control_1_R1.fastq.gz",
+      "short_r2": "C:\\RNAseq\\reads\\control_1_R2.fastq.gz",
+      "long_reads": "",
+      "pod5_dir": "",
+      "long_platform": ""
+    },
+    {
+      "include": true,
+      "sample_id": "control_2",
+      "condition": "Control",
+      "replicate": "2",
+      "batch": "batch_A",
+      "short_r1": "C:\\RNAseq\\reads\\control_2_R1.fastq.gz",
+      "short_r2": "C:\\RNAseq\\reads\\control_2_R2.fastq.gz",
+      "long_reads": "",
+      "pod5_dir": "",
+      "long_platform": ""
+    },
+    {
+      "include": true,
+      "sample_id": "control_3",
+      "condition": "Control",
+      "replicate": "3",
+      "batch": "batch_A",
+      "short_r1": "C:\\RNAseq\\reads\\control_3_R1.fastq.gz",
+      "short_r2": "C:\\RNAseq\\reads\\control_3_R2.fastq.gz",
+      "long_reads": "",
+      "pod5_dir": "",
+      "long_platform": ""
+    },
+    {
+      "include": true,
+      "sample_id": "treatment_1",
+      "condition": "Treatment",
+      "replicate": "1",
+      "batch": "batch_A",
+      "short_r1": "C:\\RNAseq\\reads\\treatment_1_R1.fastq.gz",
+      "short_r2": "C:\\RNAseq\\reads\\treatment_1_R2.fastq.gz",
+      "long_reads": "",
+      "pod5_dir": "",
+      "long_platform": ""
+    },
+    {
+      "include": true,
+      "sample_id": "treatment_2",
+      "condition": "Treatment",
+      "replicate": "2",
+      "batch": "batch_A",
+      "short_r1": "C:\\RNAseq\\reads\\treatment_2_R1.fastq.gz",
+      "short_r2": "C:\\RNAseq\\reads\\treatment_2_R2.fastq.gz",
+      "long_reads": "",
+      "pod5_dir": "",
+      "long_platform": ""
+    },
+    {
+      "include": true,
+      "sample_id": "treatment_3",
+      "condition": "Treatment",
+      "replicate": "3",
+      "batch": "batch_A",
+      "short_r1": "C:\\RNAseq\\reads\\treatment_3_R1.fastq.gz",
+      "short_r2": "C:\\RNAseq\\reads\\treatment_3_R2.fastq.gz",
+      "long_reads": "",
+      "pod5_dir": "",
+      "long_platform": ""
+    }
+  ]
+}

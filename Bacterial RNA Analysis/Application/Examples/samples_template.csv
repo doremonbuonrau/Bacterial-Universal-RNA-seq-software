@@ -1,0 +1,7 @@
+include,sample_id,condition,replicate,batch,short_r1,short_r2,long_reads,pod5_dir,long_platform
+true,control_1,Control,1,batch_A,C:\data\control_1_R1.fastq.gz,C:\data\control_1_R2.fastq.gz,,,
+true,control_2,Control,2,batch_A,C:\data\control_2_R1.fastq.gz,C:\data\control_2_R2.fastq.gz,,,
+true,control_3,Control,3,batch_A,C:\data\control_3_R1.fastq.gz,C:\data\control_3_R2.fastq.gz,,,
+true,treatment_1,Treatment,1,batch_A,C:\data\treatment_1_R1.fastq.gz,C:\data\treatment_1_R2.fastq.gz,,,
+true,treatment_2,Treatment,2,batch_A,C:\data\treatment_2_R1.fastq.gz,C:\data\treatment_2_R2.fastq.gz,,,
+true,treatment_3,Treatment,3,batch_A,C:\data\treatment_3_R1.fastq.gz,C:\data\treatment_3_R2.fastq.gz,,,

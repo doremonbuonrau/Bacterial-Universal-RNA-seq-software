@@ -1,0 +1,8 @@
+Bacterial RNA Analysis 1.9.69
+
+GO / Enrichment post-analysis plot failure fixed
+
+- Fixed the GO/Enrichment interactive-plot stage incorrectly reopening the upstream differential-expression input table through the generic `result_file` configuration field.
+- The enrichment plotter now reads the actual `enrichment_results.tsv` produced by the R enrichment engine, or an explicit `enrichment_result_file` override when supplied.
+- This resolves the false error: "The enrichment result must contain term and adjusted-p-value columns" after the statistical enrichment itself has already completed successfully.
+- No downloaded UniProt/TrEMBL/DIAMOND databases are removed or refreshed by this change; the Shared Database Library remains reusable.

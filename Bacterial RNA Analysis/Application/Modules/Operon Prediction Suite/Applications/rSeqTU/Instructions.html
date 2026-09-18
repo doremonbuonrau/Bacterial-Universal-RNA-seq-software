@@ -1,0 +1,751 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>rSeqTU Transcription Unit Predictor User Instructions</title>
+<style>
+:root{--green:#417a4b;--dark:#2a5534;--soft:#e6f2e8;--blue:#377497;--blue-soft:#e6f1f8;--ink:#1e2a22;--muted:#58655d;--line:#cddad0;--bg:#f5f8f6;--surface:#fff;--warning:#c8882b;--warning-soft:#fff3df}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:22px}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.58 "Segoe UI",Arial,sans-serif}
+a{color:#276486;text-underline-offset:2px}a:hover{color:var(--dark)}
+header{background:var(--surface);border-bottom:1px solid var(--line);padding:30px max(5vw,28px)}.hero{display:flex;align-items:center;gap:20px;max-width:1180px;margin:auto}.hero-mark{width:74px;height:74px;flex:0 0 74px;border-radius:18px;display:grid;place-items:center;background:linear-gradient(145deg,var(--soft),#fff);border:1px solid #b9d1bf;color:var(--dark);font-size:25px;font-weight:800;letter-spacing:.04em;box-shadow:0 4px 18px #1e2a2212}.hero-mark img{width:58px;height:58px;object-fit:contain;border-radius:12px}.hero-copy{min-width:0}.hero h1{color:var(--dark);font-size:34px;line-height:1.18;margin:0 0 5px}.hero-subtitle{color:var(--muted);margin:0;font-size:17px}.guide-meta{display:flex;flex-wrap:wrap;gap:7px 10px;margin-top:13px}.meta-pill{display:inline-flex;align-items:center;min-height:28px;padding:4px 10px;border:1px solid var(--line);border-radius:999px;background:#fbfdfb;color:var(--muted);font-size:13px}.meta-pill strong{color:var(--dark);margin-right:4px}
+.layout{display:grid;grid-template-columns:250px minmax(0,920px);gap:28px;max-width:1240px;margin:28px auto;padding:0 24px 60px}.contents{position:sticky;top:20px;align-self:start;max-height:calc(100vh - 40px);overflow:auto;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;box-shadow:0 3px 14px #1e2a2208}.contents-title{display:block;color:var(--dark);font-size:15px;margin:0 0 8px}.contents nav>h2{display:none}.contents nav ul{list-style:none;padding:0;margin:0}.contents nav li{margin:1px 0}.contents nav a{display:block;color:var(--dark);padding:7px 9px;text-decoration:none;border-radius:7px;line-height:1.35}.contents nav a:hover,.contents nav a:focus{background:var(--soft);outline:none}.contents .top-link{border-top:1px solid var(--line);margin-top:11px;padding-top:11px}
+main{min-width:0}.source-note{padding:14px 17px;border-radius:9px;margin:0 0 18px;background:var(--blue-soft);border-left:4px solid var(--blue);color:#29495b}.source-note strong{color:#1f536d}
+main>section.level1{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:24px;margin-bottom:18px;box-shadow:0 3px 14px #1e2a220b}main>section.level1>h1{color:var(--dark);font-size:23px;line-height:1.28;margin:0 0 14px}section.level2>h2{color:var(--dark);font-size:17px;line-height:1.35;margin:23px 0 8px}section.level3>h3{color:var(--dark);font-size:15.5px;margin:19px 0 7px}p{margin:8px 0}ul,ol{padding-left:24px}li+li{margin-top:5px}
+main ol{counter-reset:step;list-style:none;padding:0}main ol>li{counter-increment:step;margin:14px 0;padding-left:46px;position:relative}main ol>li:before{content:counter(step);position:absolute;left:0;top:-1px;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--green);color:#fff;font-weight:700}
+.table-wrap{width:100%;overflow-x:auto;margin:13px 0 16px;border:1px solid #dfe8e1;border-radius:9px}table{border-collapse:collapse;width:100%;min-width:480px;font-size:14px;margin:0}th,td{border-bottom:1px solid #e5ece7;text-align:left;padding:9px 10px;vertical-align:top}tr:last-child>td{border-bottom:0}th{background:#f0f6f1;color:var(--dark);font-weight:650}tbody tr:nth-child(even){background:#fbfdfb}td p,th p{margin:0}td ul,td ol{margin:4px 0}.table-wrap.callout{border:0;background:var(--warning-soft);border-left:4px solid var(--warning)}.table-wrap.callout table{min-width:0}.table-wrap.callout th,.table-wrap.callout td{background:transparent;border:0;padding:13px 15px}
+code,.file{background:#eef3ef;border-radius:4px;padding:2px 5px;font-family:Consolas,"Courier New",monospace;color:var(--dark);font-size:.94em}pre{overflow:auto;background:#202a23;color:#f1f7f2;border-radius:9px;padding:15px}pre code{background:transparent;color:inherit;padding:0}
+p.figure{text-align:center;margin:17px 0 5px}img{display:inline-block;max-width:100%;height:auto;border-radius:8px}p.figure img{box-shadow:0 5px 20px #1e2a2216}.caption{display:block;text-align:center;color:var(--muted);font-size:13px;margin:5px auto 15px;max-width:760px}
+.back-top{display:block;width:max-content;margin:20px 0 0 auto;color:var(--muted);font-size:13px;text-decoration:none}.back-top:hover{color:var(--dark)}footer{text-align:center;color:var(--muted);padding:22px 24px 34px}
+@media(max-width:850px){header{padding:25px 22px}.hero{align-items:flex-start}.hero-mark{width:60px;height:60px;flex-basis:60px;border-radius:14px;font-size:21px}.hero h1{font-size:28px}.layout{grid-template-columns:1fr;padding:0 16px 45px}.contents{position:static;max-height:none}main>section.level1{padding:20px}}
+@media(max-width:520px){.hero-mark{display:none}.hero h1{font-size:25px}.guide-meta{display:grid;grid-template-columns:1fr}.meta-pill{border-radius:8px}.layout{margin-top:18px;gap:18px}.table-wrap{border-radius:7px}}
+@media print{body{background:#fff;font-size:10.5pt}.contents{display:none}.layout{display:block;max-width:none;margin:0;padding:0}.hero{max-width:none}.hero-mark{box-shadow:none}header{padding:0 0 18px;margin-bottom:18px}.source-note,main>section.level1{break-inside:auto;box-shadow:none}main>section.level1{border:0;border-radius:0;padding:0;margin:0 0 22px}section.level2,table,img{break-inside:avoid}.back-top{display:none}a{color:inherit;text-decoration:none}footer{padding:18px 0 0}}
+</style>
+</head>
+<body id="top">
+<header>
+  <div class="hero">
+    <div class="hero-mark" aria-hidden="true">TU</div>
+    <div class="hero-copy">
+      <h1>rSeqTU Transcription Unit Predictor</h1>
+      <p class="hero-subtitle">User guide for bacterial RNA-seq Transcription Unit prediction</p>
+      <div class="guide-meta" aria-label="Guide details">
+        <span class="meta-pill"><strong>Guide:</strong> User Instructions</span>
+        <span class="meta-pill"><strong>Software:</strong> v18</span>
+        <span class="meta-pill"><strong>Date:</strong> 1 August 2026</span>
+        <span class="meta-pill"><strong>Interface author:</strong> Nguyen Hoang An</span>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="layout">
+  <aside class="contents" aria-label="Guide navigation">
+    <strong class="contents-title">Contents</strong>
+<ul>
+<li><a href="#overview" id="toc-overview">1. Overview</a></li>
+<li><a href="#scientific-basis-and-published-scope" id="toc-scientific-basis-and-published-scope">2. Scientific Basis and Published Scope</a></li>
+<li><a href="#system-requirements-and-installation" id="toc-system-requirements-and-installation">3. System Requirements and Installation</a></li>
+<li><a href="#preparing-input-files-and-replicate-strategy" id="toc-preparing-input-files-and-replicate-strategy">4. Preparing Input Files and Replicate Strategy</a></li>
+<li><a href="#analysis-parameters-and-strand-awareness" id="toc-analysis-parameters-and-strand-awareness">5. Analysis Parameters and Strand Awareness</a></li>
+<li><a href="#running-the-pipeline" id="toc-running-the-pipeline">6. Running the Pipeline</a></li>
+<li><a href="#reference-r-commands-for-advanced-users" id="toc-reference-r-commands-for-advanced-users">7. Reference R Commands for Advanced Users</a></li>
+<li><a href="#monitoring-stopping-and-recovery" id="toc-monitoring-stopping-and-recovery">8. Monitoring, Stopping and Recovery</a></li>
+<li><a href="#output-files-final-bedgraph-and-igv" id="toc-output-files-final-bedgraph-and-igv">9. Output Files, Final bedGraph and IGV</a></li>
+<li><a href="#interpreting-results-and-responsible-use" id="toc-interpreting-results-and-responsible-use">10. Interpreting Results and Responsible Use</a></li>
+<li><a href="#troubleshooting" id="toc-troubleshooting">11. Troubleshooting</a></li>
+<li><a href="#authors-citation-and-official-sources" id="toc-authors-citation-and-official-sources">12. Authors, Citation and Official Sources</a></li>
+</ul>
+    <div class="top-link"><a href="#top">Back to top</a></div>
+  </aside>
+  <main>
+    <div class="source-note"><strong>Source basis:</strong> This guide uses the original rSeqTU article, the official public GitHub repository, and the tested behavior of this Windows interface. Windows-specific validation, bordered Excel export, IGV Results organization, final bedGraph conversion, and cleanup are identified as interface extensions rather than features of the original R package.</div>
+<section id="overview" class="level1">
+<h1>1. Overview</h1>
+<p><strong>This operon module contains two different algorithms for predicting bacterial transcription units: rSeqTU and OpDetect.</strong></p>
+<p>rSeqTU was published on 15 May 2019 by Sheng-Yong Niu, Binqiang Liu, Qin Ma and Wen-Chi Chou. The article credits Niu with implementing the R package with Chou's help, and Niu, Ma and Chou with designing the study. The integrated Windows interface in Bacterial RNA Analysis was developed by Nguyen Hoang An and preserves the attribution of the original rSeqTU algorithm.</p>
+<p>The rSeqTU Transcription Unit Predictor is embedded in the main <strong>Bacterial RNA Analysis</strong> interface. It accepts one aligned BAM file per run, validates the matching annotation and genome sequence, generates strand-specific coverage, runs the original feature-generation and SVM functions, and exports verified results in formats suitable for Excel and IGV.</p>
+<div class="source-note"><strong>Current integrated workflow:</strong> Open <span class="file">Bacterial RNA Analysis.exe</span>, choose <strong>Operons and transcription units</strong>, and select <strong>rSeqTU</strong>. The rSeqTU workspace replaces the module chooser inside the same main window. Use <strong>&lt; Back to operon methods</strong> to compare methods or <strong>&lt; Back to analysis modules</strong> to return to the five-module dashboard. Do not launch or move the internal PowerShell and R files.</div>
+<section id="main-capabilities" class="level2">
+<h2>1.1 Main capabilities</h2>
+<ul>
+<li><p>Accepts one BAM file, a matching GFF, GFF3 or GTF annotation, a genomic FASTA file and a writable result folder.</p></li>
+<li><p>Detects R automatically and installs missing CRAN or Bioconductor packages while skipping packages that are already available.</p></li>
+<li><p>Creates a QuasR QC report, a bordered TU Excel workbook, a cleaned SVM GFF, a complete console log and an IGV Results subfolder. The final bedGraph, original annotation and original FASTA are always included. Select <strong>Copy BAM and BAI to IGV Results</strong> when a self-contained IGV folder with the alignment and index is desired.</p></li>
+<li><p>Shows the exact R source, configuration and execution command in the live console and preserves the same complete trace in the persistent full console log.</p></li>
+<li><p>Displays exact workflow-stage status and an estimated percentage, including the long SVM feature-selection stage.</p></li>
+<li><p>Supports safe cancellation, protects the original BAM, GFF/GFF3 and FASTA files, resets the interface for the next sample, and keeps a session-only record of samples already run.</p></li>
+</ul>
+</section>
+<section id="workflow-stages" class="level2">
+<h2>1.2 Workflow stages</h2>
+<div class="table-wrap"><table>
+<colgroup>
+<col style="width: 18%">
+<col style="width: 59%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Stage</strong></th>
+<th><strong>Purpose</strong></th>
+<th><strong>Typical status</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Select inputs</td>
+<td>Validate BAM, annotation, FASTA and result folder.</td>
+<td>Not started / Finished</td>
+</tr>
+<tr class="even">
+<td>Check environment</td>
+<td>Locate R and verify required packages.</td>
+<td>Running / Finished / Error</td>
+</tr>
+<tr class="odd">
+<td>Run analysis</td>
+<td>Generate QC, coverage, features and SVM predictions.</td>
+<td>Running / Finished / Error / Stopped</td>
+</tr>
+<tr class="even">
+<td>Review outputs</td>
+<td>Verify the final result set, build the IGV Results bundle and clean intermediates.</td>
+<td>Running / Finished</td>
+</tr>
+</tbody>
+</table>
+</div></section>
+<a href="#top" class="back-top">Back to top</a></section>
+<section id="scientific-basis-and-published-scope" class="level1">
+<h1>2. Scientific Basis and Published Scope</h1>
+<section id="how-rseqtu-predicts-transcription-units" class="level2">
+<h2>2.1 How rSeqTU predicts Transcription Units</h2>
+<p>The original rSeqTU method uses RNA-seq coverage continuity, gene-expression relationships and intergenic-region characteristics to distinguish neighbouring genes that are likely to be co-transcribed. The package applies random-forest-based feature selection within a machine-learning workflow and then uses an SVM model to generate Transcription Unit predictions.</p>
+<div class="table-wrap"><table>
+<colgroup>
+<col style="width: 29%">
+<col style="width: 70%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Component</strong></th>
+<th><strong>Role in the workflow</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Strand-specific coverage</td>
+<td>Provides the read-depth signal across genes and intergenic regions.</td>
+</tr>
+<tr class="even">
+<td>Genome annotation</td>
+<td>Defines gene order, coordinates and strand.</td>
+</tr>
+<tr class="odd">
+<td>Feature matrices</td>
+<td>Summarize expression means, variability, gaps and fold-change relationships.</td>
+</tr>
+<tr class="even">
+<td>Random-forest selection</td>
+<td>Ranks informative features used by the predictive model.</td>
+</tr>
+<tr class="odd">
+<td>SVM prediction</td>
+<td>Classifies adjacent same-strand relationships and builds final TU intervals.</td>
+</tr>
+</tbody>
+</table>
+</div></section>
+<section id="published-performance-and-interpretation" class="level2">
+<h2>2.2 Published performance and interpretation</h2>
+<p>The original authors reported near-98% accuracy in many tested cases, including public Escherichia coli RNA-seq datasets. This published value describes their evaluation setting; it is not a guaranteed accuracy for every organism, sequencing protocol, annotation or growth condition.</p>
+</section>
+<section id="one-sample-per-prediction-run" class="level2">
+<h2>2.3 One sample per prediction run</h2>
+<div class="table-wrap callout"><table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Important:</strong> The original core functions receive one BAM-derived coverage file and one sample prefix at a time. This GUI therefore processes one BAM per run. Biological replicates should be run separately and compared afterward; the software does not fit a replicate-aware statistical model or automatically create a replicate consensus.</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</div></section>
+<a href="#top" class="back-top">Back to top</a></section>
+<section id="system-requirements-and-installation" class="level1">
+<h1>3. System Requirements and Installation</h1>
+<section id="recommended-environment" class="level2">
+<h2>3.1 Recommended environment</h2>
+<ul>
+<li><p>A 64-bit Windows 10 or Windows 11 computer.</p></li>
+<li><p>At least 8 GB RAM; more memory is helpful for large bacterial genomes and high-coverage BAM files.</p></li>
+<li><p>Sufficient free disk space for the per-base coverage file and temporary feature matrices.</p></li>
+<li><p>Internet access during the first run if R or packages must be installed.</p></li>
+<li><p>Write permission for the selected result folder.</p></li>
+</ul>
+</section>
+<section id="package-layout" class="level2">
+<h2>3.2 Package layout inside the integrated suite</h2>
+<div class="table-wrap callout"><table>
+<colgroup><col style="width: 100%"></colgroup>
+<thead><tr class="header"><th>Bacterial RNA Analysis<br>
+├── Bacterial RNA Analysis.exe<br>
+└── Application<br>
+&nbsp;&nbsp;&nbsp;&nbsp;└── Modules<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── Operon Prediction Suite<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── Applications<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── rSeqTU<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── Instructions.html<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── Application Files<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── rSeqTU GUI.ps1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── rSeqTU backend.R<br><br>
+The user-facing package root intentionally contains only the main executable and the Application support folder. The files shown above are internal dependencies and must remain in place.</th></tr></thead><tbody></tbody>
+</table></div>
+</section>
+<section id="starting-the-software" class="level2">
+<h2>3.3 Opening rSeqTU from Bacterial RNA Analysis</h2>
+<ol>
+<li>Extract the complete package to a normal writable folder. Do not run the executable from inside the ZIP.</li>
+<li>Open <span class="file">Bacterial RNA Analysis.exe</span> at the package root.</li>
+<li>Choose <strong>Operons and transcription units</strong>, then select the <strong>rSeqTU</strong> card.</li>
+<li>The rSeqTU interface opens inside the same main window. Use <strong>Open Instructions</strong> to reopen this guide.</li>
+<li>Click <strong>Check R</strong> when needed. If R is absent, use <strong>Install R</strong> and complete the official Windows installer.</li>
+</ol>
+<p>The application searches the Windows path, registry, Program Files and current-user program folders for <code>Rscript.exe</code>. Missing packages are installed automatically; packages already installed and loadable are skipped.</p>
+<div class="source-note"><strong>Navigation:</strong> You may return to the operon-method chooser or the main analysis-module dashboard only when no rSeqTU run is active. If a run is in progress, stop it and wait for shutdown to finish before navigating away.</div>
+</section>
+<a href="#top" class="back-top">Back to top</a></section>
+<section id="preparing-input-files-and-replicate-strategy" class="level1">
+<h1>4. Preparing Input Files and Replicate Strategy</h1>
+<div class="table-wrap"><table>
+<colgroup>
+<col style="width: 18%">
+<col style="width: 31%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Input</strong></th>
+<th><strong>Requirement</strong></th>
+<th><strong>Important notes</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>BAM file</td>
+<td>Coordinate-compatible RNA-seq alignments.</td>
+<td>One BAM is analysed per run. A matching .bai may already exist; otherwise the software creates one.</td>
+</tr>
+<tr class="even">
+<td>GFF/GFF3/GTF</td>
+<td>Gene annotation for the target reference.</td>
+<td>Nine-column annotation files are accepted. Gene order, identifiers and strand must be biologically correct.</td>
+</tr>
+<tr class="odd">
+<td>FASTA</td>
+<td>Complete genomic DNA sequence.</td>
+<td>Use genomic DNA, not a CDS-only or RNA FASTA.</td>
+</tr>
+<tr class="even">
+<td>Result folder</td>
+<td>Writable destination for retained outputs.</td>
+<td>Use a separate folder for each sample or run to avoid mixing results.</td>
+</tr>
+<tr class="odd">
+<td>Chromosome name</td>
+<td>Optional reference identifier.</td>
+<td>When blank, the first FASTA record and first GFF/GFF3 sequence ID are used to match the BAM reference.</td>
+</tr>
+</tbody>
+</table>
+</div><section id="file-consistency-checks" class="level2">
+<h2>4.1 File consistency checks</h2>
+<ul>
+<li><p>The selected BAM reference length must match the selected FASTA sequence length.</p></li>
+<li><p>The selected GFF/GFF3/GTF sequence ID must describe the same chromosome or replicon.</p></li>
+<li><p>Annotations outside the linear reference length, including an origin-spanning row, are removed from the cleaned rSeqTU GFF.</p></li>
+<li><p>The BAM should represent a stranded RNA-seq workflow whose orientation is known.</p></li>
+</ul>
+</section>
+<section id="biological-replicates" class="level2">
+<h2>4.2 Biological replicates</h2>
+<ul>
+<li><p>Run each biological replicate separately using the same FASTA, annotation and quality thresholds.</p></li>
+<li><p>Do not merge treatment and control samples into one BAM for a single rSeqTU prediction.</p></li>
+<li><p>For three replicates, a practical post-analysis rule is to prioritize TU boundaries reproduced in at least two runs.</p></li>
+<li><p>Any merged-BAM or consensus procedure should be reported as an additional adaptation because it is not the replicate model described by the original package.</p></li>
+</ul>
+</section>
+<a href="#top" class="back-top">Back to top</a></section>
+<section id="analysis-parameters-and-strand-awareness" class="level1">
+<h1>5. Analysis Parameters and Strand Awareness</h1>
+<div class="table-wrap"><table>
+<colgroup>
+<col style="width: 26%">
+<col style="width: 11%">
+<col style="width: 16%">
+<col style="width: 45%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Parameter</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Accepted range</strong></th>
+<th><strong>Purpose</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Minimum mapping quality</td>
+<td>15</td>
+<td>0-255</td>
+<td>Excludes alignments below the selected MAPQ threshold during pileup.</td>
+</tr>
+<tr class="even">
+<td>Minimum base quality</td>
+<td>10</td>
+<td>0-255</td>
+<td>Excludes individual bases below the selected base-quality threshold.</td>
+</tr>
+<tr class="odd">
+<td>Chromosome name</td>
+<td>Blank</td>
+<td>Text</td>
+<td>Selects a specific BAM/FASTA/GFF reference; blank uses the first sequence records.</td>
+</tr>
+</tbody>
+</table>
+</div><section id="recommended-use" class="level2">
+<h2>5.1 Recommended use</h2>
+<p>Keep the default quality values unless the sequencing protocol, aligner settings or QC profile provides a clear reason to change them. Raising a threshold removes lower-quality evidence; lowering it retains more reads but may introduce less reliable coverage.</p>
+</section>
+<section id="strand-aware-analysis" class="level2">
+<h2>5.2 Strand-aware analysis</h2>
+<p>The workflow generates separate forward- and reverse-strand coverage columns and uses the annotation strand for TU prediction. The final bedGraph displays forward-strand TUs as positive values and reverse-strand TUs as negative values.</p>
+<div class="table-wrap callout"><table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Library-strand caution:</strong> Incorrect assumptions about RNA-seq strandedness can invert or blur the biological signal. Confirm the library orientation before interpreting TU boundaries.</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</div></section>
+<a href="#top" class="back-top">Back to top</a></section>
+<section id="running-the-pipeline" class="level1">
+<h1>6. Running the Pipeline</h1>
+<section id="starting-a-run" class="level2">
+<h2>6.1 Starting a run</h2>
+<ol>
+<li>Select the BAM, GFF/GFF3/GTF, FASTA and result folder.</li>
+<li>Optionally enter the chromosome name and adjust the quality thresholds.</li>
+<li>Click Run pipeline.</li>
+<li>Follow the workflow cards, progress panel and live Log area.</li>
+<li>Keep the application open until the completion dialog appears.</li>
+</ol>
+</section>
+<section id="backend-sequence" class="level2">
+<h2>6.2 Backend sequence</h2>
+<div class="table-wrap"><table>
+<colgroup>
+<col style="width: 11%">
+<col style="width: 88%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Step</strong></th>
+<th><strong>Backend operation</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1-2</td>
+<td>Validate inputs, detect R and verify required packages.</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>Prepare or verify the BAM index and select the matching reference.</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>Generate the QuasR QC report.</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td>Extract and validate strand-specific per-base coverage.</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>Prepare the chromosome FASTA and cleaned GFF/GFF3.</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td>Create rSeqTU-compatible feature matrices.</td>
+</tr>
+<tr class="odd">
+<td>8</td>
+<td>Run recursive feature selection and SVM prediction.</td>
+</tr>
+<tr class="even">
+<td>9</td>
+<td>Export the bordered Excel workbook and final corrected bedGraph; remove the raw underscore bedGraph.</td>
+</tr>
+<tr class="odd">
+<td>10</td>
+<td>Create IGV Results, always copy the bedGraph, annotation and FASTA, and optionally copy the BAM with its matching BAI.</td>
+</tr>
+<tr class="even">
+<td>11</td>
+<td>Verify all retained files and delete temporary coverage, feature and generated working files.</td>
+</tr>
+</tbody>
+</table>
+</div><p>The Open result folder button remains usable during a run. After a run finishes, fails or is stopped, click Reset to clear all selected paths, restore the default mapping and base-quality values, reset workflow progress and clear the on-screen log. Reset prepares the same window for the next sample and does not delete completed result files. The Samples run this session panel is not cleared by Reset; it records the sample name, time and outcome until the application is closed.</p>
+</section>
+<a href="#top" class="back-top">Back to top</a></section>
+<section id="reference-r-commands-for-advanced-users" class="level1">
+<h1>7. Reference R Commands for Advanced Users</h1>
+<p>The GUI performs the following original-package operations automatically. These examples are included for transparency and reproducibility. Adapt file paths and chromosome identifiers to the dataset.</p>
+<section id="package-installation-and-loading" class="level2">
+<h2>7.1 Package installation and loading</h2>
+<div class="table-wrap callout"><table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>if (!requireNamespace("remotes", quietly = TRUE)) {<br>
+install.packages("remotes")<br>
+}<br>
+remotes::install_github("shengyongniu/rSeqTU")<br>
+library(rSeqTU)</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</div></section>
+<section id="coverage-and-feature-generation" class="level2">
+<h2>7.2 Coverage and feature generation</h2>
+<div class="table-wrap callout"><table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>gen_NA(<br>
+"sample.bam",<br>
+"chromosome_name",<br>
+"sample"<br>
+)<br>
+<br>
+gen_cTU_data(<br>
+"sample.NA",<br>
+"sample",<br>
+"genome.gff",<br>
+"genome.fasta"<br>
+)</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</div></section>
+<section id="svm-modelling-and-prediction" class="level2">
+<h2>7.3 SVM modelling and prediction</h2>
+<div class="table-wrap callout"><table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>TU_SVM(<br>
+"SimulatedPositiveTUMatrix.txt",<br>
+"SimulatedNegativeTUMatrix.txt",<br>
+"TargetPositiveTUMatrix.txt",<br>
+"TargetNegativeTUMatrix.txt",<br>
+"sample.NA",<br>
+"genome.gff",<br>
+"sample",<br>
+"chromosome_name"<br>
+)</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</div><p>The Windows interface adds reference matching, quality-filtered strand-aware coverage, bordered Excel conversion, corrected bedGraph coordinates, an organized IGV Results bundle, complete logging and Windows-safe cleanup around these original functions.</p>
+</section>
+<a href="#top" class="back-top">Back to top</a></section>
+<section id="monitoring-stopping-and-recovery" class="level1">
+<h1>8. Monitoring, Stopping and Recovery</h1>
+<section id="progress-indicators" class="level2">
+<h2>8.1 Progress indicators</h2>
+<p>Workflow-card status is exact because the backend writes defined checkpoints. The percentage is an estimate, not a measurement of CPU work. Recursive feature selection may remain at 85% for many minutes before the next checkpoint.</p>
+<div class="table-wrap"><table>
+<colgroup>
+<col style="width: 20%">
+<col style="width: 79%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Estimated percentage</strong></th>
+<th><strong>Current operation</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>75%</td>
+<td>Generating rSeqTU feature matrices</td>
+</tr>
+<tr class="even">
+<td>85%</td>
+<td>Predicting Transcription Units with the SVM</td>
+</tr>
+<tr class="odd">
+<td>93%</td>
+<td>Finalizing the TU Excel workbook and final bedGraph</td>
+</tr>
+<tr class="even">
+<td>95%</td>
+<td>Creating the IGV Results folder</td>
+</tr>
+<tr class="odd">
+<td>97%</td>
+<td>Verifying outputs and deleting intermediate files</td>
+</tr>
+<tr class="even">
+<td>100%</td>
+<td>All requested outputs verified</td>
+</tr>
+</tbody>
+</table>
+</div></section>
+<section id="stopping-safely" class="level2">
+<h2>8.2 Stopping safely</h2>
+<p>Click Stop pipeline and confirm the warning. The GUI terminates the R process tree, removes files created by the cancelled run and protects the original BAM, annotation and FASTA inputs.</p>
+</section>
+<section id="completion-and-diagnostic-logs" class="level2">
+<h2>8.3 Completion and diagnostic logs</h2>
+<p>A completed run displays a completion dialog and notification sound. Every completed or failed run exports one full console log containing paths, thresholds, timestamps, the exact R source and command used, standard output, warnings, errors and final state. No duplicate source-code directory is created; the full console log itself contains the exact R source, configuration and execution command.</p>
+</section>
+<section id="session-sample-history" class="level2">
+<h2>8.4 Session sample history</h2>
+<p>The Samples run this session panel lists each completed, failed or stopped run with its sample name, time and outcome. The list remains visible after Reset so the user can avoid selecting the same sample accidentally. When a BAM that already completed successfully in the current session is selected again, the software displays a confirmation warning before starting. This history is stored only in memory and is cleared automatically when the software is closed and reopened.</p>
+</section>
+<a href="#top" class="back-top">Back to top</a></section>
+<section id="output-files-final-bedgraph-and-igv" class="level1">
+<h1>9. Output Files, Final bedGraph and IGV</h1>
+<div class="table-wrap"><table>
+<colgroup>
+<col style="width: 47%">
+<col style="width: 52%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Retained result</strong></th>
+<th><strong>Purpose</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>&lt;sample&gt; QuasR QC report.pdf</td>
+<td>QuasR quality-control report.</td>
+</tr>
+<tr class="even">
+<td>&lt;sample&gt; Final TU Table.xlsx</td>
+<td>Bordered TU table; row 1 is the title, row 2 contains headers and no blank row is inserted.</td>
+</tr>
+<tr class="odd">
+<td>&lt;chromosome&gt; rSeqTU clean for SVM.gff</td>
+<td>Cleaned chromosome-specific GFF used by the SVM stage.</td>
+</tr>
+<tr class="even">
+<td>&lt;sample&gt; rSeqTU full console log.txt</td>
+<td>Complete console output, settings, warnings, errors and final state.</td>
+</tr>
+<tr class="odd">
+<td>IGV Results/&lt;BAM&gt;.bam<br><em>Optional</em></td>
+<td>BAM used by the analysis. Included only when <strong>Copy BAM and BAI to IGV Results</strong> is selected.</td>
+</tr>
+<tr class="even">
+<td>IGV Results/&lt;BAM&gt;.bam.bai<br><em>Optional</em></td>
+<td>Matching BAM index placed beside the BAM when the optional copy setting is selected.</td>
+</tr>
+<tr class="odd">
+<td>IGV Results/&lt;sample&gt; result.bedgraph</td>
+<td>Only retained bedGraph; IGV-ready coordinates and strand sign.</td>
+</tr>
+<tr class="even">
+<td>IGV Results/&lt;input annotation&gt;</td>
+<td>Copy of the selected annotation in its original filename and format.</td>
+</tr>
+<tr class="odd">
+<td>IGV Results/&lt;input FASTA&gt;</td>
+<td>Copy of the selected genomic FASTA in its original filename and format.</td>
+</tr>
+</tbody>
+</table>
+</div><section id="viewing-results-in-igv" class="level2">
+<h2>Viewing results in IGV</h2>
+<ol>
+<li>Open the genomic FASTA as the reference genome.</li>
+<li>Load the GFF/GFF3 annotation as the gene track.</li>
+<li>From the IGV Results subfolder, load &lt;sample&gt; result.bedgraph for predicted TU intervals.</li>
+<li>If <strong>Copy BAM and BAI to IGV Results</strong> was selected, load the copied BAM together with its matching .bai index for read-level coverage. Otherwise, load the original BAM and matching index from their original location.</li>
+<li>Interpret positive bedGraph values as forward-strand TUs and negative values as reverse-strand TUs.</li>
+</ol>
+<p>Generated bedGraph coordinates are zero-based and half-open, whereas GFF/GFF3 coordinates are one-based and inclusive. The converter handles this difference automatically.</p>
+</section>
+<a href="#top" class="back-top">Back to top</a></section>
+<section id="interpreting-results-and-responsible-use" class="level1">
+<h1>10. Interpreting Results and Responsible Use</h1>
+<section id="final-tu-excel-workbook" class="level2">
+<h2>10.1 Final TU Excel workbook</h2>
+<div class="table-wrap"><table>
+<colgroup>
+<col style="width: 23%">
+<col style="width: 76%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Column</strong></th>
+<th><strong>Interpretation</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>TU ID</td>
+<td>Identifier assigned to the predicted Transcription Unit.</td>
+</tr>
+<tr class="even">
+<td>Start / End</td>
+<td>One-based genomic interval reported by the rSeqTU TU table.</td>
+</tr>
+<tr class="odd">
+<td>Strand</td>
+<td>Forward (+) or reverse (-) annotation strand.</td>
+</tr>
+<tr class="even">
+<td>Confidence</td>
+<td>Model output retained from rSeqTU; values may frequently be 1 in the current package implementation.</td>
+</tr>
+<tr class="odd">
+<td>Genes</td>
+<td>Gene identifiers grouped into the predicted TU.</td>
+</tr>
+</tbody>
+</table>
+</div></section>
+<section id="recommended-review-sequence" class="level2">
+<h2>10.2 Recommended review sequence</h2>
+<ol>
+<li>Review the QuasR QC report before interpreting predictions.</li>
+<li>Inspect the final bedGraph and BAM coverage in IGV.</li>
+<li>Check gene orientation, intergenic continuity and abrupt coverage changes.</li>
+<li>Compare biological replicates run separately and prioritize reproducible boundaries.</li>
+<li>Validate important predictions with independent evidence such as RT-PCR, long-read RNA sequencing, promoter/terminator mapping or curated operon databases.</li>
+</ol>
+</section>
+<section id="limitations" class="level2">
+<h2>10.3 Limitations</h2>
+<ul>
+<li><p>Predictions are model-based and are not experimental confirmation.</p></li>
+<li><p>One BAM is processed per run; replicate variance is not modelled jointly.</p></li>
+<li><p>Results depend on expression under the sampled condition, sequencing depth, mapping quality and annotation accuracy.</p></li>
+<li><p>Alternative promoters, internal terminators and condition-specific suboperons can create real coverage changes within a predicted TU.</p></li>
+<li><p>The software should be used as a prioritization and visualization tool, not as the sole basis for clinical, regulatory or safety-critical decisions.</p></li>
+</ul>
+</section>
+<a href="#top" class="back-top">Back to top</a></section>
+<section id="troubleshooting" class="level1">
+<h1>11. Troubleshooting</h1>
+<div class="table-wrap"><table>
+<colgroup>
+<col style="width: 31%">
+<col style="width: 68%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Problem</strong></th>
+<th><strong>Recommended action</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>The main suite or rSeqTU workspace does not open</td>
+<td>Keep the complete extracted package together and start only <span class="file">Bacterial RNA Analysis.exe</span>. Inspect <span class="file">Application\Logs\launcher.log</span> and <span class="file">Application\Logs\gui-startup.log</span>. Do not launch the internal <code>.ps1</code> file directly.</td>
+</tr>
+<tr class="even">
+<td>R is not detected</td>
+<td>Complete the official R installer, reopen the GUI and click Check R.</td>
+</tr>
+<tr class="odd">
+<td>Chromosome selection fails</td>
+<td>Confirm that BAM, FASTA and GFF/GFF3 identifiers and reference lengths describe the same chromosome.</td>
+</tr>
+<tr class="even">
+<td>The run remains at 85%</td>
+<td>Check the live Log and Task Manager. Recursive feature selection can be lengthy.</td>
+</tr>
+<tr class="odd">
+<td>A pipeline error appears</td>
+<td>Open &lt;sample&gt; rSeqTU full console log.txt and inspect the final error and the WARNINGS AND ERRORS section.</td>
+</tr>
+<tr class="even">
+<td>IGV cannot open the BAM</td>
+<td>Open the BAM and matching .bai from the same IGV Results subfolder. Confirm that the copied annotation and FASTA describe the same reference.</td>
+</tr>
+<tr class="odd">
+<td>Two bedGraph files remain from an older version</td>
+<td>Use IGV Results/&lt;sample&gt; result.bedgraph. The current release removes the underscore version automatically.</td>
+</tr>
+<tr class="even">
+<td>Results from separate replicates disagree</td>
+<td>Review QC, strandedness, sequencing depth and condition-specific expression. Do not force a consensus without reporting the disagreement.</td>
+</tr>
+</tbody>
+</table>
+</div><section id="reporting-a-reproducible-run" class="level2">
+<h2>Reporting a reproducible run</h2>
+<p>Archive the full console log, QC PDF, final Excel workbook, cleaned SVM GFF, the IGV Results subfolder and whether BAM/BAI copying was enabled, software version and the mapping/base-quality thresholds. Record whether the chromosome was selected automatically or entered manually.</p>
+</section>
+<a href="#top" class="back-top">Back to top</a></section>
+<section id="authors-citation-and-official-sources" class="level1">
+<h1>12. Authors, Citation and Official Sources</h1>
+<section id="special-thanks-and-authorship" class="level2">
+<h2>12.1 Special thanks and authorship</h2>
+<p>Special thanks are extended to Sheng-Yong Niu, Binqiang Liu, Qin Ma and Wen-Chi Chou for creating the rSeqTU R package and publishing the machine-learning framework on which this graphical workflow depends. Their work made local bacterial Transcription Unit prediction, quality control, feature selection, SVM modelling and genome-browser visualization available to the research community.</p>
+<p><strong>Authorship clarification:</strong> Nguyen Hoang An is credited as the author of this Windows graphical interface and integrated workflow. The original rSeqTU algorithms, package functions and scientific methodology remain credited to Niu, Liu, Ma and Chou.</p>
+</section>
+<section id="recommended-citation" class="level2">
+<h2>12.2 Recommended citation</h2>
+<p><em>Niu, S.-Y., Liu, B., Ma, Q., &amp; Chou, W.-C. (2019). rSeqTU-A machine-learning based R package for prediction of bacterial transcription units. Frontiers in Genetics, 10, 374.</em></p>
+<p><strong>DOI:</strong> <a href="https://doi.org/10.3389/fgene.2019.00374"><u>https://doi.org/10.3389/fgene.2019.00374</u></a></p>
+</section>
+<section id="official-source-code-repository" class="level2">
+<h2>12.3 Official source-code repository</h2>
+<p>The official repository contains the original R source code, README documentation, workflow examples and reference commands. The examples in Section 7 are adapted from that public documentation.</p>
+<p class="figure"><img src="data:image/png;base64,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" style="width:6.1in;height:1.99636in"></p>
+<p class="caption">Figure 1. Official rSeqTU GitHub repository and QR-code access.</p>
+<p><a href="https://github.com/shengyongniu/rSeqTU"><u>https://github.com/shengyongniu/rSeqTU</u></a></p>
+</section>
+<section id="software-source-note" class="level2">
+<h2>12.4 Software-source note</h2>
+<p>This Windows package is an independent graphical interface and workflow integration. It is not an official release from the original rSeqTU authors unless they explicitly adopt it.</p>
+</section>
+<a href="#top" class="back-top">Back to top</a></section>
+  </main>
+</div>
+<footer>rSeqTU Transcription Unit Predictor · self-contained user guide</footer>
+</body>
+</html>

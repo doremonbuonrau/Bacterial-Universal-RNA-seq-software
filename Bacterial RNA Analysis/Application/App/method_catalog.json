@@ -1,0 +1,623 @@
+{
+  "catalog_version": "1.9.10",
+  "updated": "2026-08-17",
+  "scope": "Quality control, cleaning, alignment, BAM processing, count preparation, coverage tracks, and analysis-ready export only.",
+  "principle": "Accuracy is prioritized over runtime and memory. AI or machine learning is favored only when validation matches the biological task and input type.",
+  "stages": {
+    "short_qc": {
+      "label": "Short-read QC and cleaning",
+      "options": [
+        {
+          "id": "fastqc_fastp_multiqc",
+          "name": "FastQC + fastp + MultiQC (recommended)",
+          "rank": 1,
+          "definition": "FastQC diagnoses raw and cleaned FASTQ files, fastp performs adapter and quality filtering, and MultiQC combines all samples into one report.",
+          "pros": [
+            "Broad raw and post-cleaning diagnostics",
+            "Automatic paired-end adapter detection",
+            "HTML and JSON evidence for each sample",
+            "Extends the sequencing-company fastp workflow with stronger reporting"
+          ],
+          "cons": [
+            "Automatic adapter detection is less controlled than supplying an exact adapter sequence",
+            "Overly aggressive filters can discard real reads"
+          ],
+          "best_for": "Most Illumina or DNBSEQ bacterial RNA-seq projects when adapter sequences are unknown.",
+          "ai_ml": false,
+          "requires": [
+            "fastqc",
+            "fastp",
+            "multiqc"
+          ]
+        },
+        {
+          "id": "fastqc_cutadapt_multiqc",
+          "name": "FastQC + Cutadapt + MultiQC",
+          "rank": 2,
+          "definition": "Cutadapt searches for user-specified adapter sequences and applies explicit quality and length filters; FastQC and MultiQC provide before-and-after evidence.",
+          "pros": [
+            "Highly controlled adapter matching",
+            "Excellent for non-standard kits and known adapters",
+            "Transparent matching parameters"
+          ],
+          "cons": [
+            "The correct adapter sequence must be supplied",
+            "Less convenient when library chemistry is uncertain"
+          ],
+          "best_for": "Projects with exact adapter or primer sequences from the sequencing provider.",
+          "ai_ml": false,
+          "requires": [
+            "fastqc",
+            "cutadapt",
+            "multiqc"
+          ]
+        },
+        {
+          "id": "qc_only",
+          "name": "FastQC + MultiQC without trimming",
+          "rank": 3,
+          "definition": "Assesses FASTQ quality but keeps the read sequences unchanged.",
+          "pros": [
+            "No sequence alteration",
+            "Appropriate for provider-cleaned FASTQ",
+            "Still produces complete QC evidence"
+          ],
+          "cons": [
+            "Adapters or poor-quality tails remain if the provider did not remove them"
+          ],
+          "best_for": "FASTQ files certified as cleaned by the sequencing provider.",
+          "ai_ml": false,
+          "requires": [
+            "fastqc",
+            "multiqc"
+          ]
+        }
+      ]
+    },
+    "short_alignment": {
+      "label": "Short-read bacterial alignment",
+      "options": [
+        {
+          "id": "bowtie2_accuracy",
+          "name": "Bowtie2 configurable alignment (recommended)",
+          "rank": 1,
+          "definition": "A gapped short-read aligner with user-selectable end-to-end or local mode, every official sensitivity preset, and expert command-line overrides. The initial setting is Bowtie2's sensitive end-to-end preset.",
+          "pros": [
+            "Excellent bacterial reference mapping accuracy",
+            "Preset, scoring, seeding, paired-end, and reporting behavior can be adjusted in Guided tool options",
+            "Low soft-clipping ambiguity",
+            "Standard BAM output"
+          ],
+          "cons": [
+            "May reject reads with genuine damaged or untrimmed ends",
+            "Not intended for spliced eukaryotic transcripts"
+          ],
+          "best_for": "Illumina or DNBSEQ bacterial RNA-seq with a reference genome.",
+          "ai_ml": false,
+          "requires": [
+            "bowtie2",
+            "samtools"
+          ]
+        },
+        {
+          "id": "dual_bowtie2_hisat2",
+          "name": "Bowtie2 + HISAT2 dual alignment",
+          "rank": 2,
+          "definition": "Runs Bowtie2 and bacterial-mode HISAT2 independently in the same RNA-seq workflow. Both BAM/BAI sets are retained and, when gene counting is enabled, each aligner is quantified independently into a separate raw-count matrix and a separate Counts & Annotation workbook sheet.",
+          "pros": [
+            "Directly compares two established short-read alignment models on the same cleaned reads",
+            "Creates separate Bowtie2 and HISAT2 BAM/BAI files",
+            "Creates separate raw-count sheets so aligner-dependent count differences remain visible",
+            "Useful for checking whether downstream conclusions are robust to aligner choice"
+          ],
+          "cons": [
+            "Uses approximately twice the short-read alignment compute and additional storage",
+            "The two count matrices are technical alternatives and must not be combined as biological replicates",
+            "Differences between aligners should be reviewed rather than averaged away"
+          ],
+          "best_for": "Projects that want an explicit Bowtie2-versus-HISAT2 robustness comparison while keeping both results available for downstream analysis.",
+          "ai_ml": false,
+          "requires": [
+            "bowtie2",
+            "hisat2",
+            "samtools"
+          ]
+        },
+        {
+          "id": "dual_bowtie2_bwa",
+          "name": "Bowtie2 primary + BWA-MEM2 audit",
+          "rank": 3,
+          "definition": "Runs configurable Bowtie2 as the primary alignment and configurable BWA-MEM2 independently, retaining both BAMs and a mapping-comparison report.",
+          "pros": [
+            "Exposes aligner-sensitive loci",
+            "Provides a second high-quality BAM for validation",
+            "Useful when accuracy is more important than compute cost"
+          ],
+          "cons": [
+            "The two BAMs must not be blindly merged",
+            "Disagreement requires locus-level review",
+            "Uses roughly twice the storage and compute"
+          ],
+          "best_for": "Accuracy-audit projects and high-value operon or DEG studies.",
+          "ai_ml": false,
+          "requires": [
+            "bowtie2",
+            "bwa-mem2",
+            "samtools"
+          ]
+        },
+        {
+          "id": "bwa_mem2",
+          "name": "BWA-MEM2",
+          "rank": 4,
+          "definition": "A highly optimized local gapped aligner that is also widely used for bacterial DNA-seq.",
+          "pros": [
+            "Strong alternative mapping model",
+            "Excellent compatibility with DNA-seq and variant workflows",
+            "Robust around indels"
+          ],
+          "cons": [
+            "Local alignment can soft-clip read ends",
+            "Less directly interpretable than strict end-to-end mapping for transcript-boundary work"
+          ],
+          "best_for": "A confirmation alignment or projects combining RNA-seq and bacterial DNA-seq.",
+          "ai_ml": false,
+          "requires": [
+            "bwa-mem2",
+            "samtools"
+          ]
+        },
+        {
+          "id": "hisat2_no_splice",
+          "name": "HISAT2 no-splice, no-softclip",
+          "rank": 5,
+          "definition": "HISAT2 configured with spliced alignment disabled and soft clipping prohibited so it behaves as an unspliced bacterial mapper.",
+          "pros": [
+            "Mature and memory-efficient",
+            "Compatible with the original OpDetect preprocessing design",
+            "Useful for reproducing earlier analyses"
+          ],
+          "cons": [
+            "Its main advantages target spliced genomes",
+            "Not the first accuracy choice for ordinary bacterial reference mapping"
+          ],
+          "best_for": "Reproducing an existing HISAT2-aligned study.",
+          "ai_ml": false,
+          "requires": [
+            "hisat2",
+            "samtools"
+          ]
+        }
+      ]
+    },
+    "long_basecalling": {
+      "label": "Nanopore basecalling",
+      "options": [
+        {
+          "id": "already_basecalled",
+          "name": "Use supplied FASTQ or unaligned BAM",
+          "rank": 1,
+          "definition": "Skips basecalling because nucleotide calls have already been produced by the instrument or sequencing provider.",
+          "pros": [
+            "No raw-signal requirement",
+            "Fastest route to alignment",
+            "Preserves a provider-validated workflow"
+          ],
+          "cons": [
+            "Older basecalls cannot be improved without POD5",
+            "The original model and chemistry should be documented"
+          ],
+          "best_for": "Long-read FASTQ or unaligned BAM input.",
+          "ai_ml": false,
+          "requires": []
+        },
+        {
+          "id": "dorado_sup",
+          "name": "Dorado SUP neural basecalling (accuracy-first)",
+          "rank": 1,
+          "definition": "Oxford Nanopore Dorado decodes POD5 electrical signal with the latest chemistry-matched super-accurate neural model.",
+          "pros": [
+            "Highest-accuracy Dorado model family",
+            "Chemistry-specific direct-RNA models",
+            "Retains rich BAM tags and sequencing summaries"
+          ],
+          "cons": [
+            "Requires POD5 raw signal",
+            "Very compute intensive and normally benefits from an NVIDIA GPU",
+            "Dorado is installed separately under its own license"
+          ],
+          "best_for": "ONT cDNA or direct-RNA data with raw POD5 where accuracy is more important than runtime.",
+          "ai_ml": true,
+          "requires": [
+            "dorado"
+          ]
+        },
+        {
+          "id": "dorado_hac",
+          "name": "Dorado HAC neural basecalling",
+          "rank": 2,
+          "definition": "Dorado high-accuracy neural basecalling, balancing accuracy and compute.",
+          "pros": [
+            "High basecalling accuracy",
+            "Lower compute demand than SUP",
+            "Officially recommended general balance"
+          ],
+          "cons": [
+            "Not the maximum-accuracy Dorado model",
+            "Requires POD5 and chemistry matching"
+          ],
+          "best_for": "Systems that cannot practically run SUP.",
+          "ai_ml": true,
+          "requires": [
+            "dorado"
+          ]
+        }
+      ]
+    },
+    "long_qc": {
+      "label": "Long-read QC and filtering",
+      "options": [
+        {
+          "id": "nanoplot_longqc",
+          "name": "NanoPlot + LongQC (recommended)",
+          "rank": 1,
+          "definition": "NanoPlot summarizes length, yield, and quality distributions while LongQC adds reference-free k-mer and coverage diagnostics.",
+          "pros": [
+            "Complementary long-read diagnostics",
+            "Supports ONT and PacBio",
+            "Detects patterns missed by short-read QC"
+          ],
+          "cons": [
+            "LongQC adds dependencies and runtime",
+            "Neither tool can correct a poor library"
+          ],
+          "best_for": "Accuracy-first ONT or PacBio projects.",
+          "ai_ml": false,
+          "requires": [
+            "NanoPlot",
+            "longQC.py"
+          ]
+        },
+        {
+          "id": "nanoplot",
+          "name": "NanoPlot",
+          "rank": 2,
+          "definition": "A long-read QC report focused on read length, quality, yield, and their joint distributions.",
+          "pros": [
+            "Clear plots",
+            "Straightforward FASTQ or BAM input",
+            "Widely used"
+          ],
+          "cons": [
+            "Less diagnostic depth than the combined mode"
+          ],
+          "best_for": "Routine long-read QC or systems where LongQC is unavailable.",
+          "ai_ml": false,
+          "requires": [
+            "NanoPlot"
+          ]
+        },
+        {
+          "id": "long_qc_only",
+          "name": "Long-read QC without filtering",
+          "rank": 3,
+          "definition": "Reports long-read quality and length but does not remove reads.",
+          "pros": [
+            "Preserves all evidence",
+            "Avoids arbitrary long-read cutoffs"
+          ],
+          "cons": [
+            "Low-quality reads remain available to the aligner"
+          ],
+          "best_for": "PacBio HiFi or already filtered provider data.",
+          "ai_ml": false,
+          "requires": [
+            "NanoPlot"
+          ]
+        }
+      ]
+    },
+    "long_alignment": {
+      "label": "Long-read bacterial alignment",
+      "options": [
+        {
+          "id": "minimap2",
+          "name": "Minimap2 platform-specific preset (recommended)",
+          "rank": 1,
+          "definition": "Maps ONT or PacBio reads with platform-specific long-read error models and no assumption of bacterial introns.",
+          "pros": [
+            "Best-established long-read mapper",
+            "Supports ONT, PacBio CLR, and PacBio HiFi",
+            "Standard BAM output",
+            "Reliable downstream compatibility"
+          ],
+          "cons": [
+            "Repeat placement can remain ambiguous",
+            "A splice preset should not be used blindly for ordinary bacteria"
+          ],
+          "best_for": "Most bacterial long-read RNA-seq projects.",
+          "ai_ml": false,
+          "requires": [
+            "minimap2",
+            "samtools"
+          ]
+        },
+        {
+          "id": "dual_minimap2_winnowmap",
+          "name": "Minimap2 primary + Winnowmap2 repeat audit",
+          "rank": 2,
+          "definition": "Runs Minimap2 as the primary map and Winnowmap2 independently to audit reads in repetitive and paralogous regions.",
+          "pros": [
+            "Improves scrutiny of repetitive loci",
+            "Retains two independent BAMs",
+            "Appropriate when compute cost is unimportant"
+          ],
+          "cons": [
+            "No automatic merging of conflicting placements",
+            "Most small bacterial genomes gain little outside repeats",
+            "Requires meryl"
+          ],
+          "best_for": "Repeat-rich actinomycete genomes and duplicated biosynthetic gene-cluster regions.",
+          "ai_ml": false,
+          "requires": [
+            "minimap2",
+            "winnowmap",
+            "meryl",
+            "samtools"
+          ]
+        },
+        {
+          "id": "winnowmap2",
+          "name": "Winnowmap2",
+          "rank": 3,
+          "definition": "A long-read mapper derived from minimap2 and optimized to reduce mapping bias in repetitive sequence.",
+          "pros": [
+            "Strong repeat-aware placement",
+            "Useful for paralogs and duplicated BGC regions"
+          ],
+          "cons": [
+            "Adds repetitive-k-mer preprocessing",
+            "Less broadly established for bacterial transcriptomics than minimap2"
+          ],
+          "best_for": "Projects dominated by repetitive or duplicated regions.",
+          "ai_ml": false,
+          "requires": [
+            "winnowmap",
+            "meryl",
+            "samtools"
+          ]
+        }
+      ]
+    },
+    "quantification": {
+      "label": "Analysis-ready raw gene counts",
+      "options": [
+        {
+          "id": "featurecounts_fadu_audit",
+          "name": "featureCounts + optional FADU bacterial audit",
+          "rank": 2,
+          "definition": "featureCounts supplies the analysis-ready integer fragment matrix. When Julia and FADU are installed, FADU additionally produces a separate fractional bacterial-overlap audit. If they are unavailable or the audit fails, the valid featureCounts export is retained and the pipeline continues with a recorded warning.",
+          "pros": [
+            "Integer counts remain valid for later DESeq2 and edgeR",
+            "Optional FADU adds bacterial-specific overlap evidence when available",
+            "A missing or failed optional audit never discards the completed featureCounts matrix"
+          ],
+          "cons": [
+            "FADU fractional counts are not direct DESeq2 input",
+            "The optional audit requires Julia and FADU and may be skipped when they are unavailable"
+          ],
+          "best_for": "Maximum-confidence bacterial expression handoff.",
+          "ai_ml": false,
+          "requires": [
+            "featureCounts"
+          ]
+        },
+        {
+          "id": "featurecounts",
+          "name": "featureCounts core export (recommended)",
+          "rank": 1,
+          "definition": "Assigns aligned reads or fragments to normalized genomic features and exports integer raw counts.",
+          "pros": [
+            "Accurate and mature",
+            "Handles paired, single, strand-specific, SAF, GFF, and long reads",
+            "Valid raw input for later DESeq2 and edgeR"
+          ],
+          "cons": [
+            "Conservative handling can discard ambiguous overlaps",
+            "Annotation feature and identifier fields must be correct"
+          ],
+          "best_for": "The primary later-DE count matrix.",
+          "ai_ml": false,
+          "requires": [
+            "featureCounts"
+          ]
+        },
+        {
+          "id": "fadu",
+          "name": "FADU only",
+          "rank": 3,
+          "definition": "A prokaryote-specific depth utility that assigns fractional evidence according to fragment overlap with unique portions of each feature.",
+          "pros": [
+            "Designed for bacterial operon overlap",
+            "Can recover evidence for short or overlapping genes",
+            "Outputs descriptive TPM"
+          ],
+          "cons": [
+            "Fractional counts require care in later count-based DE",
+            "Linux or macOS and Julia dependencies",
+            "GFF3 input required"
+          ],
+          "best_for": "Secondary bacterial quantification and operon-focused handoff.",
+          "ai_ml": false,
+          "requires": [
+            "julia",
+            "fadu.jl"
+          ]
+        },
+        {
+          "id": "htseq",
+          "name": "HTSeq-count",
+          "rank": 4,
+          "definition": "Counts read or read-pair overlap with annotation features using explicit intersection rules.",
+          "pros": [
+            "Very transparent counting logic",
+            "Reproduces the sequencing-company workflow"
+          ],
+          "cons": [
+            "Often discards more ambiguous bacterial reads",
+            "Slower and less flexible than featureCounts"
+          ],
+          "best_for": "Reproduction or count-method sensitivity checks.",
+          "ai_ml": false,
+          "requires": [
+            "htseq-count"
+          ]
+        },
+        {
+          "id": "skip_counts",
+          "name": "Skip counting and export BAM only",
+          "rank": 5,
+          "definition": "Produces BAM, BAI, coverage, QC, metadata, and reference files but no gene-count matrix.",
+          "pros": [
+            "Minimum preprocessing scope",
+            "Allows a later tool to make all counting decisions"
+          ],
+          "cons": [
+            "Not immediately ready for DESeq2 or edgeR"
+          ],
+          "best_for": "Users who want alignment-only handoff.",
+          "ai_ml": false,
+          "requires": []
+        }
+      ]
+    },
+    "coverage": {
+      "label": "Coverage tracks",
+      "options": [
+        {
+          "id": "cpm_bigwig_stranded",
+          "name": "Compact CPM BigWig, strand-specific (recommended)",
+          "rank": 1,
+          "definition": "Exports compact CPM-normalized BigWig tracks for IGV. A stranded library produces transcript-plus and transcript-minus tracks; an unstranded library produces one CPM track.",
+          "pros": [
+            "Reduces coverage output from as many as 12 files to one or two files per sample",
+            "BigWig is indexed, compact, and efficient for IGV",
+            "CPM supports practical across-sample visual comparison"
+          ],
+          "cons": [
+            "Does not retain duplicate raw-depth or bedGraph copies",
+            "Incorrect library orientation inverts strand labels"
+          ],
+          "best_for": "Routine IGV inspection and clean analysis-ready export.",
+          "ai_ml": false,
+          "requires": [
+            "bamCoverage"
+          ]
+        },
+        {
+          "id": "raw_and_cpm_stranded",
+          "name": "Comprehensive raw + CPM, BigWig + bedGraph",
+          "rank": 2,
+          "definition": "Exports one-base-resolution bedGraph and BigWig tracks with raw depth and CPM-scaled signal, including forward and reverse RNA strands when the library orientation is known.",
+          "pros": [
+            "Ready for IGV",
+            "Supports operon and antisense inspection",
+            "Raw signal is preserved while CPM aids across-sample comparison"
+          ],
+          "cons": [
+            "Creates several files per sample",
+            "Incorrect library orientation inverts strand labels"
+          ],
+          "best_for": "Complete advanced-analysis handoff.",
+          "ai_ml": false,
+          "requires": [
+            "bamCoverage"
+          ]
+        },
+        {
+          "id": "raw_unstranded",
+          "name": "Raw unstranded BigWig only",
+          "rank": 3,
+          "definition": "Exports one compact, unnormalized, unstranded BigWig depth track per sample.",
+          "pros": [
+            "Smallest output set",
+            "No strand assumption"
+          ],
+          "cons": [
+            "Cannot distinguish sense and antisense transcription",
+            "Poorer across-library comparability"
+          ],
+          "best_for": "Unstranded libraries or minimal BAM handoff.",
+          "ai_ml": false,
+          "requires": [
+            "bamCoverage"
+          ]
+        }
+      ]
+    }
+  },
+  "export_contract": [
+    "cleaned or newly basecalled FASTQ files when generated, plus a source-input manifest for pass-through reads",
+    "coordinate-sorted primary BAM files and BAI indexes",
+    "optional independent alternative-aligner BAM and BAI files",
+    "SAMtools flagstat, stats, and idxstats reports",
+    "raw integer gene-count matrix and per-sample assignment summaries when counting is enabled",
+    "optional FADU prokaryotic audit matrix",
+    "raw and CPM BigWig or bedGraph coverage tracks",
+    "reference FASTA, FAI, normalized GFF3, SAF, and gene metadata",
+    "sample sheet and advanced-analysis metadata template",
+    "IGV session file",
+    "MultiQC report",
+    "commands, parameters, tool versions, checksums, and resumable run manifest"
+  ],
+  "sources": [
+    {
+      "title": "nf-core/rnaseq",
+      "url": "https://github.com/nf-core/rnaseq"
+    },
+    {
+      "title": "Bowtie2 manual",
+      "url": "https://bowtie-bio.sourceforge.net/bowtie2/manual.shtml"
+    },
+    {
+      "title": "Minimap2",
+      "url": "https://github.com/lh3/minimap2"
+    },
+    {
+      "title": "Winnowmap2",
+      "url": "https://github.com/marbl/winnowmap"
+    },
+    {
+      "title": "fastp",
+      "url": "https://github.com/OpenGene/fastp"
+    },
+    {
+      "title": "Cutadapt",
+      "url": "https://cutadapt.readthedocs.io/en/stable/guide.html"
+    },
+    {
+      "title": "featureCounts",
+      "url": "https://subread.sourceforge.net/featureCounts.html"
+    },
+    {
+      "title": "FADU",
+      "url": "https://github.com/IGS/FADU"
+    },
+    {
+      "title": "deepTools bamCoverage",
+      "url": "https://deeptools.readthedocs.io/en/latest/content/tools/bamCoverage.html"
+    },
+    {
+      "title": "Dorado",
+      "url": "https://github.com/nanoporetech/dorado"
+    },
+    {
+      "title": "NanoPlot",
+      "url": "https://github.com/wdecoster/NanoPlot"
+    },
+    {
+      "title": "LongQC",
+      "url": "https://github.com/yfukasawa/LongQC"
+    }
+  ]
+}
