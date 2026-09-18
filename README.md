@@ -1,4 +1,4 @@
-[README_Bacterial_RNA_Analysis_v30.md](https://github.com/user-attachments/files/32359889/README_Bacterial_RNA_Analysis_v30.md)
+[README_Bacterial_RNA_Analysis_v30_with_screenshots.md](https://github.com/user-attachments/files/32361121/README_Bacterial_RNA_Analysis_v30_with_screenshots.md)
 # Bacterial RNA Analysis
 
 **Version 1.9.77 v30**
@@ -91,6 +91,12 @@ Bacterial RNA Analysis is built around five integrated analysis modules:
 5. **Operons and transcription units**
 
 The suite combines a Windows graphical interface with Linux bioinformatics tools executed through WSL2. Downstream statistical analysis uses R and Python components, while interactive result exploration is provided through linked HTML and Plotly-based visualization interfaces.
+
+### Main application interface
+
+![Bacterial RNA Analysis main module selection screen](screenshots/01_main_analysis_modules.png)
+
+*Main application window for choosing an analysis workflow.*
 
 The software emphasizes:
 
@@ -295,6 +301,10 @@ and the feature modules stored under `Application/Modules/`.
 
 The RNA-seq processing module prepares bacterial sequencing data for downstream analysis.
 
+![RNA-seq processing read-type selection](screenshots/02_rnaseq_read_type.png)
+
+*RNA-seq Processing begins by selecting short reads, long reads, or a combined project.*
+
 ## Supported read types
 
 ### Short reads
@@ -417,6 +427,10 @@ Depending on the selected workflow, results can include:
 
 The Differential Expression module identifies genes whose abundance changes reproducibly between biological conditions.
 
+![Differential Expression setup interface](screenshots/03_differential_expression_setup.png)
+
+*Differential Expression setup showing count/metadata inputs, statistical design, filtering thresholds, and analysis controls.*
+
 ## Recommended input
 
 Use:
@@ -492,6 +506,26 @@ v30 includes linked interactive views such as:
 - single-gene expression explorer
 - advanced DE diagnostic views
 - generic linked-result visualization
+
+### Example interactive DE views
+
+**Volcano plot with linked spreadsheet**
+
+![Interactive volcano plot](screenshots/04_de_volcano.png)
+
+**MA plot**
+
+![Interactive MA plot](screenshots/07_de_ma_plot.png)
+
+**Genome-region view**
+
+![Genome-region differential-expression view](screenshots/06_de_genome_region.png)
+
+**Circos-style genomic view**
+
+![Circos-style differential-expression view](screenshots/05_de_circos.png)
+
+Each view remains linked to the interactive result spreadsheet, allowing genes selected in a plot or table to be inspected across compatible visualizations.
 
 ### v30 selection behavior
 
@@ -601,6 +635,20 @@ v30 supports interactive views including:
 
 The visualization environment includes linked table selection, appearance controls, editable plot settings, and export-oriented views.
 
+### Example functional-analysis views
+
+**GO DAG focus and context**
+
+![GO DAG focus and context](screenshots/09_go_dag.png)
+
+**Bacterial cellular-component map**
+
+![Bacterial cellular-component map](screenshots/10_bacterial_cellular_component.png)
+
+**RichFactor enrichment plot**
+
+![RichFactor enrichment plot](screenshots/11_richfactor.png)
+
 ---
 
 # 4. Co-expression and networks
@@ -677,6 +725,16 @@ Available v30 visualizations include:
 - module-expression trends
 - generic result-table plotting
 
+### Example co-expression and network views
+
+**Interactive gene network**
+
+![Interactive co-expression or regulatory network](screenshots/08_network_view.png)
+
+**Module-expression heatmap**
+
+![Co-expression module-expression heatmap](screenshots/12_module_expression_heatmap.png)
+
 Where configured, integrated external database analysis can also connect network interpretation with resources such as STRING.
 
 Network predictions are hypotheses and should be supported with independent biological evidence whenever possible.
@@ -684,6 +742,10 @@ Network predictions are hypotheses and should be supported with independent biol
 ---
 
 # 5. Operons and transcription units
+
+![Operon Prediction Suite](screenshots/13_operon_prediction_suite.png)
+
+*Operon Prediction Suite showing the available transcription-unit workflows and their different starting inputs.*
 
 The suite provides two integrated approaches:
 
