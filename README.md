@@ -530,34 +530,6 @@ v30 includes linked interactive views such as:
 
 Each view remains linked to the interactive result spreadsheet, allowing genes selected in a plot or table to be inspected across compatible visualizations.
 
-### v30 selection behavior
-
-The v30 interactive runtime includes:
-
-- visible rings around selected scatter points
-- selected data redrawn on top of overlapping traces
-- persistent point-information panels
-- use of the spreadsheet `product` field as gene function where available
-- persistent selected-gene state across compatible plot redraws
-- draggable information panels in supported views
-- compact handling of long identifiers
-- direct bar or histogram selection without an inappropriate gene-target ring
-- blank-space clearing for compatible plots
-- linked selection between plots and result tables
-
-### Single-gene explorer
-
-When a gene is selected, the explorer can display persistent statistics for every condition, including:
-
-- maximum
-- upper fence
-- third quartile
-- median
-- first quartile
-- lower fence
-- minimum
-
-These condition statistics remain visible while the automatic information option is enabled.
 
 ---
 
