@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+[README_Bacterial_RNA_Analysis_v30_with_screenshots.md](https://github.com/user-attachments/files/32361121/README_Bacterial_RNA_Analysis_v30_with_screenshots.md)
+>>>>>>> a6c5657728ca3ddb3d58c91aee68aec4e715ed7c
 # Bacterial RNA Analysis
 
 **Version 1.9.77 v30**
